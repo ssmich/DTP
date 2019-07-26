@@ -13,7 +13,6 @@ const eventSchema = new mongoose.Schema({
     time: String,
     image: String,
     cost: String,
-    rating: Number,
 });
 
 const Event = mongoose.model("Event", eventSchema);
