@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const userSchema = new mongoose.Schema({
-   name: String,
-   email: String, 
-   password: String,
-   contactInfo: String ,
+   name: {type:String,required:true},
+   email: {type:String, unique:true, required:true},
+   password: {type:String, required:true},
+   contactInfo: String,
    event: {type:mongoose.Schema.Types.ObjectId, ref:"Event"},
    picture: String,
    playerRating: Number,

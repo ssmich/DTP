@@ -2,32 +2,36 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>DTP EVENTS INDEX</title>
   </head>
   <body>
     <header>
-      <h1>Events</h1>
-      <nav>
-        <ul>
-          <li>
-            <a href="/">Main Page</a>
-          </li>
-          <li>
-            <a href="/events/new">Host a New Event</a>
-          </li>
-        </ul>
-      </nav>
+        <h1>EVENTS INDEX</h1>
+      
+      <div class="icon" style="height: 100px; width: 100px; background-color: orange"><a href="/">GO HOME</a></div>
+      
+      <form action="/users/login" method="GET">
+        <h3>Login Form</h3>
+        <input type="email" name="email" placeholder="enter your email"/>
+        <input type="password" name="password" placeholder="enter your pw"/>
+        <input type="button" value="login">
+      </form>
     </header>
-    <main>
-      <h2>Events</h2>
-      <ul>
-          <% for(let i = 0; i < events.length; i++){ %>
-              <li>
-                  <a href="/events/<%=events[i]._id%>"><%=events[i].name%></a>
-              </li>
-          <% } %>
-      </ul>
-
-    </main>
+      <main>
+      <h3>This is the body of the Event Index page</h3>
+      </main>
+    <footer>
+    <h3>This is the footer of the Event Index page</h3>
+    <a href="/events/new">Host Game</a><br/><br/>
+    </footer>
   </body>
+  
+  <style>
+    *{border: 1px solid black}
+    header{background-color: lightsalmon; height: auto; width: 100%; display: flex; flex-direction: row; justify-content: space-between}
+    main{background-color: lightblue; height: 30vh}
+    footer{background-color: violet}
+    a{background-color: green;
+    color: white}
+    </style>
 </html>
