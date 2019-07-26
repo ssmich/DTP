@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <header>
+      <h1>Edit <%=event.name%></h1>
+      <nav>
+        <ul>
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/events">All Games</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h2>Event Info:</h2>
+      <form action="/events/<%=event._id%>?_method=PUT" method="post">
+        <input type="text" name="name" value="<%=event.name%>"/><br/>
+        <input type="date" name="date" value="<%=event.date%>"/><br/>
+        <input type="text" name="time" value="<%=event.time%>"/><br/>
+        <input type="text" name="gameToBePlayed" value="<%=event.gameToBePlayed%>"/><br/>
+        <input type="number" name="maxNumberOfPlayers" value="<%=event.maxNumberofPlayers%>"/><br/>
+        <input type="number" name="minNumberOfPlayers" value="<%=event.minNumberofPlayers%>"/><br/>
+        <input type="number" name="availableSpots" value="<%=event.availableSpots%>"/><br/>
+        <input type="text" name="location" value="<%=event.location%>"/><br/>
+        <textarea name="description"><%=event.description%></textarea><br/>
+        <input type="text" name="type" value="<%=event.type%>"/><br/>
+        <input type="text" name="image" value="<%=event.image%>"/><br/>
+        <input type="submit" value="Update Event Info"/>
+      </form>
+    </main>
+  </body>
+</html>

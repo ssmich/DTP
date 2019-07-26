@@ -8,16 +8,16 @@ require('./db/db');
 const eventsController = require("./controllers/events");
 const usersController = require("./controllers/users");
 
-//app.use(session);
+app.use(session);
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride("_method"));
-// app.use('/events', eventsController);
+app.use('/events', eventsController);
 app.use('/users', usersController);
 
 
 app.get('/', (req, res)=>{
     res.render('home/index.ejs', {
-        // message: req.session.message
+        message: req.session.message
     });
 });
 

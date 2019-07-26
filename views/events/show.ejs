@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <header>
+      <h1><%=event.name%></h1>
+      <nav>
+        <ul>
+          <li>
+            <a href="/">Main Page</a>
+          </li>
+          <li>
+            <a href="/articles">Events</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section>
+        <%=event.name%><br/>
+        <%=event.date%><br/>
+        <%=event.time%><br/>
+        <%=event.gameToBePlayed%><br/>
+        <%=event.maxNumberofPlayers%><br/>
+        <%=event.minNumberofPlayers%><br/>
+        <%=event.availableSpots%><br/>
+        <%=event.location%><br/>
+        <%=event.description%><br/>
+        <%=event.type%><br/>
+        <%=event.image%><br/>
+      </section>
+      <section>
+          <a href="/events/<%=event._id%>/edit">Edit</a>
+      </section>
+
+    </main>
+  </body>
+</html>
