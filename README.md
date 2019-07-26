@@ -9,10 +9,7 @@ games 'hosted' by other registered users. Registered users can choose to sign up
 games at a time or as a 'host' for a game of their creation which other users can sign up to play. 
 
 Data Structure
-Users register by providing an email, password, and city/state, and contact info. Users can choose to create a game as
-a 'host.' A host provides the required attributes: event name (e.g. Pete's Ping-Pong Pow-Wow, name of game being played 
-(e.g. ping-pong), location, date, available player spots, and description which should include and associated costs
-to play.  The user is assigned a userID.
+App homepage shows a carousel of photographs showing Users register by providing an email, password, and city/state, and contact info. Users can choose to create a game as a 'host.' A host provides the required attributes: event name (e.g. Pete's Ping-Pong Pow-Wow, name of game being played (e.g. ping-pong), location, date, available player spots, and description which should include any associated costs to play.  The user is assigned a userID. 
 Users can view available games on the game index page and choose to sign up to play. 
 
 Getting Started
