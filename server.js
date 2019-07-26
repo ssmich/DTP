@@ -14,7 +14,7 @@ app.use(methodOverride("_method"));
 app.use('/events', eventsController);
 app.use('/users', usersController);
 
-//app.get('/', (req, res)=>{
+app.get('/', (req, res)=>{
     res.render('home/index.ejs', {
         message: req.session.message
     })
