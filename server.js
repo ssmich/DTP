@@ -6,13 +6,13 @@ const app = express();
 
 require('./db/db');
 const eventsController = require("./controllers/events");
-const usersController = require("./controllers/users");
+// const usersController = require("./controllers/users");
 
 //app.use(session);
-app.use(bodyparser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride("_method"));
 app.use('/events', eventsController);
-app.use('/users', usersController);
+// app.use('/users', usersController);
 
 app.get('/', (req, res)=>{
     res.render('home/index.ejs', {

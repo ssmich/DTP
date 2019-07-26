@@ -32,22 +32,8 @@
         <textarea name="description"><%=event.description%></textarea><br/>
         <input type="text" name="type" value="<%=event.type%>"/><br/>
         <input type="text" name="image" value="<%=event.image%>"/><br/>
-        <input type="submit" value="Update Game Info"/>
+        <input type="submit" value="Update Event Info"/>
       </form>
     </main>
   </body>
 </html>
-
-    // name: String,
-    // gameToBePlayed: String,
-    // location: String,
-    host: {type:mongoose.Schema.Types.ObjectId, ref:"User"},
-    // maxNumberOfPlayers: Number,
-    // minNumberOfPlayers: Number,
-    // availableSpots: Number,
-    description: String,
-    type: String,
-    date: Date,
-    time: String,
-    image: String,
-    cost: String,

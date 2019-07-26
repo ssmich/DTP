@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <header>
+      <h1>Events</h1>
+      <nav>
+        <ul>
+          <li>
+            <a href="/">Main Page</a>
+          </li>
+          <li>
+            <a href="/events/new">Host a New Event</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h2>Events</h2>
+      <ul>
+          <% for(let i = 0; i < events.length; i++){ %>
+              <li>
+                  <a href="/events/<%=events[i]._id%>"><%=events[i].name%></a>
+              </li>
+          <% } %>
+      </ul>
+
+    </main>
+  </body>
+</html>
