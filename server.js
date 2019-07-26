@@ -8,7 +8,13 @@ require('./db/db');
 const eventsController = require("./controllers/events");
 const usersController = require("./controllers/users");
 
-app.use(session);
+app.use(session({
+  secret: 'This is a random secret string',
+  resave: false, //we only save the cookie when we mutate it.
+  saveUninitialized: false //don't save the cookie until the user has logged in
+  //legally, you're not supposed to track user data until the user has logged in
+  //which is why you're asked to accept that a site will use cookies
+}));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride("_method"));
 app.use('/events', eventsController);
