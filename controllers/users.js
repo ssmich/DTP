@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const User = require('../models/users');
 const Event = require('../models/events');
 
+
 //index route for all users
 router.get('/', async (req, res)=>{
     try{

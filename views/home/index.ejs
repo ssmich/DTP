@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>DTP Login Page</title>
+  </head>
+  <body>
+    <header>
+        <h1>HOME PAGE</h1>
+      
+      <div class="icon" style="height: 100px; width: 100px; background-color: orange"><a href="/">GO HOME</a></div>
+      
+      <h2><a href="/users/new">Register</a></h2>
+      <form action="/login" method="POST">
+        <h3>Login Form</h3>
+        <input type="email" name="email" placeholder="enter your email"/>
+        <input type="password" name="password" placeholder="enter your pw"/>
+        <input type="button" value="login">
+      </form>
+    </header>
+      <main>
+      <h3>This is the body of the main page</h3>
+      </main>
+    <footer>
+    <h3>This is the footer of the main page</h3>
+    <a href="/events/new">Host Game</a><br/><br/>
+    <a href="/events/">Find Available Events</a><br/>
+    </footer>
+  </body>
+  
+  <style>
+    *{border: 1px solid black}
+    header{background-color: lightsalmon; height: auto; width: 100%; display: flex; flex-direction: row; justify-content: space-between}
+    main{background-color: lightblue; height: 30vh}
+    footer{background-color: violet}
+    a{background-color: green;
+    color: white}
+    </style>
+</html>
