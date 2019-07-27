@@ -79,20 +79,28 @@ router.put('/:id', async (req, res)=>{
 
 //post route to create new registered user
 router.post('/', async (req, res)=>{
-    try{
-        const password = req.body.password;
-        const hashedPassword = bcrypt.hashSync(password);
-        console.log(hashedPassword, "<---hashed Password in post route.");
-        req.body.password = hashedPassword;
-        const newUser = await User.create(req.body);
-        console.log(newUser, "<---new user in post route.")
-        req.session.userId = newUser._id;
-        res.redirect('/events/');
-    } 
-    catch(err){
-        console.log(err, "<----error in user post route");
-        res.send(err);
+//make 10 users at once
+    for (let i = 1; i <= 10; i++){
+        try{
+            const num = i.toString();
+            req.body.name = req.body.name + num;
+            req.body.password = req.body.password + num;
+            req.body.email = req.body.email + num;
+            const password = req.body.password;
+            const hashedPassword = bcrypt.hashSync(password);
+            console.log(hashedPassword, "<---hashed Password in post route.");
+            req.body.password = hashedPassword;
+            const newUser = await User.create(req.body);
+            console.log(newUser, "<---new user in post route.")
+            req.session.userId = newUser._id;
+            res.redirect('/events/');
+        } 
+        catch(err){
+            console.log(err, "<----error in user post route");
+            res.send(err);
+        }
     }
+    
 });
 
 router.delete('/:id', async (req, res)=>{
