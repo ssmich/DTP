@@ -63,7 +63,7 @@ router.get('/:id', async (req, res)=>{
         console.log(eventsBeingHosted, "<----events hosted by user in show route, host NOT populated")
         res.render('users/show.ejs', {
             user: user,
-            eventsBeingHosted: eventsBeingHosted
+            event: eventsBeingHosted
         });
     } 
     catch(err){
@@ -81,7 +81,7 @@ router.get('/:id/edit', async (req, res)=>{
         console.log(eventsBeingHosted, '<---events hosted by user in edit route, host NOT populated');
         res.render('users/edit.ejs', {
             user: user,
-            eventsBeingHosted: eventsBeingHosted
+            event: eventsBeingHosted
         })
     } 
     catch(err){
