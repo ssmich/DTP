@@ -4,10 +4,10 @@
     <body>
         <header>
             <%-include ../../partials/_navbar.ejs%>
-            <h1>Edit <%=foundUser.name%>'s Information</h1>
+            <h1>Edit <%=user.name%>'s Information</h1>
         </header>
         <main>
-            <form action="/users/<%=foundUser._id%>?_method=PUT" method="POST">
+            <form action="/users/<%=user._id%>?_method=PUT" method="POST">
                 Edit Name: 
                     <input type="text" name="name" value="name"><br/>
                 Edit Password: 

@@ -9,8 +9,8 @@
         <main>
             <h3>This is the body of the Event Index page</h3>
             <ul>Events being hosted
-                <%for(let i = 0; i < foundEvents.length; i++){%>
-                <a href="/events/<%=foundEvents[i]._id%>"><li class='event'><%=foundEvents[i].name%></li></a>
+                <%for(let i = 0; i < events.length; i++){%>
+                <a href="/events/<%=events[i]._id%>"><li class='event'><%=events[i].name%></li></a>
                 <%}%>
             </ul>
         </main>

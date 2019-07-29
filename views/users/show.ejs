@@ -4,10 +4,10 @@
     <body>
         <header>
             <%-include ../../partials/_navbar.ejs%>
-            <h1><%=foundUser.name%>'s Show Page</h1>
+            <h1><%=user.name%>'s Show Page</h1>
         </header>
         <main>
-            <ul><%=foundUser.name%>'s Events
+            <ul><%=user.name%>'s Events
                 <%eventsBeingHosted.forEach(function(event){%>
                     <a href="/events/<%=event._id%>"<li><%=event.name%></li></a>
                 <%})%>
