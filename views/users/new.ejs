@@ -8,7 +8,12 @@
     </head>
     <body>
         <h1>Register New User</h1>
-      <form action="/users/" method="POST">
+        <%if(message){%>
+          <script>
+            alert('<%=message%>');
+          </script>
+        <%}%>
+        <form action="/users/" method="POST">
         <input value="" placeholder="Name" type="text" name='name'>
         <input value="" placeholder="Email Address" type="email" name='email'>
         <input value="" placeholder="Password" type="password" name='password'>

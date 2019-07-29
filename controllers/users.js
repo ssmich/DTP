@@ -21,6 +21,8 @@ router.get('/', async (req, res)=>{
 
 //new route to form to register new user
 router.get("/new", async (req, res)=>{
+    console.log("in new controler", req.session);
+    console.log("in new controler", res.locals);
     try{
         res.render('users/new.ejs');
     } catch(err){
@@ -113,8 +115,12 @@ router.post('/', async (req, res)=>{
         res.redirect('/events/');
     } 
     catch(err){
+        if(err.code == 11000){
+            req.session.message = "Email registered by another user. Please use a different email to register.";
+        }
         console.log(err, "<----error in user post route");
-        res.send(err);
+        console.log(req.session.message);
+        res.redirect('/users/new')
     }
 });
 
