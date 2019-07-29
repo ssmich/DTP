@@ -78,7 +78,7 @@ router.get('/new', (req, res) => {
         res.send(err);
       } else {
         console.log(createdEvent, ' < createdEvent in post route');
-        res.redirect('/events')
+        res.redirect('/events/'+ createdEvent._id);
       }
     });
   })
@@ -90,9 +90,7 @@ router.get('/new', (req, res) => {
         res.send(err);
       } else {
         console.log(updatedEvent, ' <-- show route document from model');
-        res.render('Events/show.ejs', {
-          updatedEvent: updatedEvent
-        });
+        res.redirect('/events/'+req.params.id);
       };
     });
   });
@@ -103,7 +101,7 @@ router.get('/new', (req, res) => {
         res.send(err);
       } else {
         console.log(response, " <--- Delete route")
-        res.redirect('/Events');
+        res.redirect('/events');
       };
     });
   });
