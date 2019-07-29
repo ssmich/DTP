@@ -1,0 +1,71 @@
+*{
+    
+    color: rgb(66, 58, 56,.9)
+}
+body{
+    max-width: 100%; 
+    margin: 0 ;
+    padding: 0;
+}
+header{
+    background-color: #89828C; 
+    height: 10vh; 
+    display: flex; 
+    padding: 1rem;
+}
+main{
+    display: flex;
+    justify-content: center; 
+    background-color: #E7E7E5; 
+    padding: 1rem;
+    margin: 0 auto;
+    width: auto;
+}
+footer{background-color: #C6E6DE}
+a{
+    /* background-color: green; */
+    text-decoration: none;
+}
+#login-box{
+    display: flex; 
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 15vw;
+    min-height: 25vh;
+    background-color: rgba(255, 255, 255, 0.6);
+}
+#login-box>input{
+    height: 2rem;
+    text-align: right;
+    padding: 0 1rem;
+}
+#login-box>h2{
+    line-height: 18vh;
+    font-size: 2rem; 
+    text-align: center;   
+}
+#registration-form{
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+    height: 60vh;
+    text-align: center;
+}
+/* Color Theme Swatches in Hex */
+.Pastels-1-hex { color: #89828C; } /*Slate Blue*/
+.Pastels-2-hex { color: #E7E7E5; } /*Pale Robins Egg Blue*/
+.Pastels-3-hex { color: #BDB9B1; } /*Ash Green*/
+.Pastels-4-hex { color: #C6E6DE; } /*Sage*/
+.Pastels-5-hex { color: #CFB4AE; } /*Olive Drab*/
+/* Color Theme Swatches in RGBA */
+.Pastels-1-rgba { color: rgba(137, 130, 140, 1); }
+.Pastels-2-rgba { color: rgba(231, 231, 229, 1); }
+.Pastels-3-rgba { color: rgba(189, 185, 177, 1); }
+.Pastels-4-rgba { color: rgba(198, 230, 222, 1); }
+.Pastels-5-rgba { color: rgba(207, 180, 174, 1); }
+/* Color Theme Swatches in HSLA */
+.Pastels-1-hsla { color: hsla(281, 4, 52, 1); }
+.Pastels-2-hsla { color: hsla(60, 3, 90, 1); }
+.Pastels-3-hsla { color: hsla(39, 8, 71, 1); }
+.Pastels-4-hsla { color: hsla(165, 39, 83, 1); }
+.Pastels-5-hsla { color: hsla(10, 25, 74, 1); }

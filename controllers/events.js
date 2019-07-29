@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
         // we can make folders in our views
         // to seperate each resource
         res.render('events/index.ejs', {
-          events: foundEvents
+          foundEvents: foundEvents
         });
       }
     })
@@ -23,61 +23,50 @@ router.get('/new', (req, res) => {
     res.render('events/new.ejs')
   });
   
-  
-//   router.get('/:id/edit', (req, res) => {
-//     Event.findById(req.params.id, (err, foundEvent) => {
-//       if(err){
-//         res.send(err);
-//       } else {
-//         console.log(foundEvent, "<---- edit route, document from mongodb")
-//         res.render('Events/edit.ejs', {
-//           Event: foundEvent
-//         });
-//       };
-//     });
-//   });
-  
-  router.get('/:id', (req, res) => {
-  
-    Event.findById(req.params.id,(err, retrievedEvent) => {
+  router.get('/:id/edit', (req, res) => {
+    Event.findById(req.params.id, (err, foundEvent) => {
       if(err){
         res.send(err);
       } else {
-        console.log(retrievedEvent, " <_-- put route response from db");
+        console.log(foundEvent, "<---- edit route, document from mongodb")
+        res.render('Events/edit.ejs', {
+          foundEvent: foundEvent
+        });
+      };
+    });
+  });
+
+  router.post('/:id', async (req,res)=>{
+    try{
+        console.log(req.session, 'this is the req.session')
+        const foundEvent = await Event.findById(req.params.id);
+        const foundUser = await User.findById(req.session.userId)
+        foundUser.event = req.params.id
+        req.session.message = "You've been added to game"
+        console.log(foundUser);
         res.render('events/show.ejs', {
-          event: retrievedEvent
+          message: req.session.message,
+          event: foundEvent
+        })
+    }catch(err){
+        res.send(err);
+        console.log(err);
+    }
+   })
+  
+  router.get('/:id', (req, res) => {
+    Event.findById(req.params.id,(err, foundEvent) => {
+      if(err){
+        res.send(err);
+      } else {
+        console.log(foundEvent, " <_-- put route response from db");
+        res.render('events/show.ejs', {
+          foundEvent: foundEvent
         });
       }
     })
   });
-  
-//   router.get('/:id', (req, res) => {
-//     console.log(req.params, " params in the show route")
-//     Event.findById(req.params.id, (err, foundEvent) => {
-//       if(err){
-//         res.send(err);
-//       } else {
-//         console.log(foundEvent, ' <-- show route document from model');
-//         res.render('Events/show.ejs', {
-//           Event: foundEvent
-//         });
-//       };
-//     });
-//   });
-  
-//   router.delete('/:id', (req, res) => {
-  
-//     Event.findOneAndDelete(req.params.id, (err, response) => {
-//       if(err){
-//         res.send(err);
-//       } else {
-//         console.log(response, " <--- Delete route")
-//         res.redirect('/Events');
-//       };
-//     });
-//   });
-  
-  
+
   router.post('/', (req, res) => {
     // req.body is the information from the form
     console.log(req.body, ' req.body in post route')
@@ -93,5 +82,30 @@ router.get('/new', (req, res) => {
       }
     });
   })
+  
+  router.put('/:id', (req, res) => {
+    console.log(req.params, " params in the show route")
+    Event.findByIdAndUpdate(req.params.id, req.body, (err, updatedEvent) => {
+      if(err){
+        res.send(err);
+      } else {
+        console.log(updatedEvent, ' <-- show route document from model');
+        res.render('Events/show.ejs', {
+          updatedEvent: updatedEvent
+        });
+      };
+    });
+  });
+  
+  router.delete('/:id', (req, res) => {
+    Event.findOneAndDelete(req.params.id, (err, response) => {
+      if(err){
+        res.send(err);
+      } else {
+        console.log(response, " <--- Delete route")
+        res.redirect('/Events');
+      };
+    });
+  });
   
 module.exports = router;
