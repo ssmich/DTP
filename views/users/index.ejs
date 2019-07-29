@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title></title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="css/style.css" rel="stylesheet">
-    </head>
+    <%-include ../../partials/_head.ejs%>
     <body>
-        <h2>There's no need for you to be here.</h2>
+        <header>
+            <%-include ../../partials/_navbar.ejs%>
+            <h1>User Index Page</h1> 
+        </header> 
+        <main>
+            <ul>List of Users
+                <%foundUsers.forEach(function(user){%>
+                    <li><a class="show-user-link" href="users/<%=user._id%>"><%=user.name%></a></li>
+                <%}%>
+            </ul>
+
+        </main>
     </body>
+    <%-include ../../partials/_footer.ejs%>
 </html>

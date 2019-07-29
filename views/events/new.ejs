@@ -1,29 +1,21 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
+          <%-include ../../partials/_head.ejs%>
   <body>
     <header>
       <h1>Create an Event</h1>
-      <nav>
-        <ul>
-          <li>
-            <a href="/">Home</a>
-          </li>
-          <li>
-            <a href="/events">Events</a>
-          </li>
-        </ul>
-      </nav>
+      <%-include ../../partials/_navbar.ejs%>
     </header>
     <main>
         <form action="/events/" method="post">
-            <input type="text" name="name" placeholder="Name of your event"/><br/>
-            <input type="date" name="date" placeholder="MM/DD/YYYY"/><br/>
-            <input type="text" name="time" placeholder="Time players should arrive"/><br/>
-            <input type="text" name="gameToBePlayed" placeholder="Name of game/sport/activity being played at event"/><br/>
+            Enter Event Name:
+                <input type="text" name="name" placeholder="Name of your event"/><br/>
+            Enter Date:
+                <input type="date" name="date" placeholder="MM/DD/YYYY"/><br/>
+            Enter Time:
+                <input type="text" name="time" placeholder="Time players should arrive"/><br/>
+            Enter Game:
+                <input type="text" name="gameToBePlayed" placeholder="Name of game/sport/activity being played at event"/><br/>
             <input type="number" name="maxNumberOfPlayers" placeholder="Maximum # of players required"/><br/>
             <input type="number" name="minNumberOfPlayers" placeholder="Minimum # of players required"/><br/>
             <input type="number" name="availableSpots" placeholder="# of players spots available"/><br/>
@@ -32,7 +24,8 @@
             <input type="text" name="type" placeholder="Event type (e.g. cards, boardgame, indoor sport...)"/><br/>
             <input type="text" name="image"/><br/>
             <input type="submit" value="Create Event"/>
-          </form>
+        </form>
     </main>
+    <%-include ../../partials/_footer.ejs%>
   </body>
 </html>

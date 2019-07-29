@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>User Show Page</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="css/style.css" rel="stylesheet">
-    </head>
+    <%-include ../../partials/_head.ejs%>
     <body>
-        <h1><%=user.name%>'s Show Page</h1>
-        <ul><%=user.name%>'s Events
-            <%eventsBeingHosted.forEach(function(event){%>
-                <a href="/events/<%=event._id%>"<li><%=event.name%></li></a>
-            <%})%>
-        </ul>
+        <header>
+            <%-include ../../partials/_navbar.ejs%>
+            <h1><%=foundUser.name%>'s Show Page</h1>
+        </header>
+        <main>
+            <ul><%=foundUser.name%>'s Events
+                <%eventsBeingHosted.forEach(function(event){%>
+                    <a href="/events/<%=event._id%>"<li><%=event.name%></li></a>
+                <%})%>
+            </ul> 
+        </main> 
+        <%-include ../../partials/_footer.ejs%>
     </body>
 </html>
