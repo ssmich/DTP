@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
         // we can make folders in our views
         // to seperate each resource
         res.render('events/index.ejs', {
-          foundEvents: foundEvents
+          event: foundEvents
         });
       }
     })
@@ -30,7 +30,7 @@ router.get('/new', (req, res) => {
       } else {
         console.log(foundEvent, "<---- edit route, document from mongodb")
         res.render('Events/edit.ejs', {
-          foundEvent: foundEvent
+          event: foundEvent
         });
       };
     });
@@ -61,7 +61,7 @@ router.get('/new', (req, res) => {
       } else {
         console.log(foundEvent, " <_-- put route response from db");
         res.render('events/show.ejs', {
-          foundEvent: foundEvent
+          event: foundEvent
         });
       }
     })
@@ -78,7 +78,7 @@ router.get('/new', (req, res) => {
         res.send(err);
       } else {
         console.log(createdEvent, ' < createdEvent in post route');
-        res.redirect('/events/'+ createdEvent._id);
+        res.redirect('/events')
       }
     });
   })
@@ -90,7 +90,9 @@ router.get('/new', (req, res) => {
         res.send(err);
       } else {
         console.log(updatedEvent, ' <-- show route document from model');
-        res.redirect('/events/'+req.params.id);
+        res.render('Events/show.ejs', {
+          updatedEvent: updatedEvent
+        });
       };
     });
   });
@@ -101,7 +103,7 @@ router.get('/new', (req, res) => {
         res.send(err);
       } else {
         console.log(response, " <--- Delete route")
-        res.redirect('/events');
+        res.redirect('/Events');
       };
     });
   });

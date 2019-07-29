@@ -35,9 +35,7 @@ app.use('/users', usersController);
 
 
 app.get('/', (req, res)=>{
-    res.render('home/index.ejs', {
-        message: req.session.message
-    });
+    res.render('home/index.ejs')
 });
 
 app.listen(3000, ()=>{
