@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%-include ../../partials/_head.ejs%>
+    <body>
+        <header>
+            <%-include ../../partials/_navbar.ejs%>
+            <h1>Edit <%=foundUser.name%>'s Information</h1>
+        </header>
+        <main>
+            <form action="/users/<%=foundUser._id%>?_method=PUT" method="POST">
+                Edit Name: 
+                    <input type="text" name="name" value="name"><br/>
+                Edit Password: 
+                    <input type="password" name="oldPassword" placeholder="Enter Old Password" value=""><br/>
+                    <input type="password" name="newPassword" placeholder="Enter New Password" value=""><br/>
+                Edit Email Address: 
+                    <input type="email" name="email" placeholder="Enter New Email Address" value=""><br/>
+                Edit Preferred Contact Information: 
+                    <select name="contactStyle">
+                        <option value="none">Use my...</option>
+                        <option value="email">email address</option>
+                        <option value="phone">phone Number</option>
+                    </select>
+                    <input type="text" name="contactInfo" placeholder="Contact Information"value=""><br/>
+            </form>
+        </main>
+        <%-include ../../partials/_footer.ejs%>
+    </body>
+</html>

@@ -15,10 +15,12 @@ app.use(session({
   //legally, you're not supposed to track user data until the user has logged in
   //which is why you're asked to accept that a site will use cookies
 }));
+app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride("_method"));
 app.use('/events', eventsController);
 app.use('/users', usersController);
+
 
 
 app.get('/', (req, res)=>{
