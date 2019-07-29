@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Make New User</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="css/style.css" rel="stylesheet">
-    </head>
+    <%-include ../../partials/_head.ejs%>
     <body>
-        <h1>Register New User</h1>
-        <%if(message){%>
-          <script>
-            alert('<%=message%>');
-          </script>
-        <%}%>
-        <form action="/users/" method="POST">
-        <input value="" placeholder="Name" type="text" name='name'>
-        <input value="" placeholder="Email Address" type="email" name='email'>
-        <input value="" placeholder="Password" type="password" name='password'>
-        <input type="submit" value="Register">
-      </form>
+        <header>
+            <%-include ../../partials/_navbar.ejs%>
+            <h1>New User Page</h1>
+        </header>
+        <main>
+            <h1>Register New User</h1>
+            <%if(message){%>
+              <script>
+                alert('<%=message%>');
+              </script>
+            <%}%>
+            <form action="/users/" method="POST">
+            <input value="" placeholder="Name" type="text" name='name'>
+            <input value="" placeholder="Email Address" type="email" name='email'>
+            <input value="" placeholder="Password" type="password" name='password'>
+            <input type="submit" value="Register">
+          </form>
+        </main>
+        <%-include ../../partials/_footer.ejs%>
     </body>
 </html>

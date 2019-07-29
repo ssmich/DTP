@@ -1,41 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <header>
-      <h1><%=event.name%></h1>
-      <nav>
-        <ul>
-          <li>
-            <a href="/">Main Page</a>
-          </li>
-          <li>
-            <a href="/articles">Events</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
-    <main>
-      <section>
-        <%=event.name%><br/>
-        <%=event.date%><br/>
-        <%=event.time%><br/>
-        <%=event.gameToBePlayed%><br/>
-        <%=event.maxNumberofPlayers%><br/>
-        <%=event.minNumberofPlayers%><br/>
-        <%=event.availableSpots%><br/>
-        <%=event.location%><br/>
-        <%=event.description%><br/>
-        <%=event.type%><br/>
-        <%=event.image%><br/>
-      </section>
-      <section>
-          <a href="/events/<%=event._id%>/edit">Edit</a>
-      </section>
-
-    </main>
-  </body>
+    <%-include ../../partials/_head.ejs%>
+    <body>
+        <header>
+            <%-include ../../partials/_navbar.ejs%> 
+            <h1><%=foundEvent.name%></h1>
+        </header>
+        <main>
+            <section>
+                Name: <%=foundEvent.name%><br/>
+                Date: <%=foundEvent.date%><br/>
+                Time: <%=foundEvent.time%><br/>
+                Location: <%=foundEvent.location%><br/>
+                Host:   <%=foundEvent.host.name%><br/>
+                Contact Info: <%=foundEvent.host.contactInfo%><br/>
+                Game: <%=foundEvent.gameToBePlayed%><br/>
+                Description: <%=foundEvent.description%><br/>
+                Maximum Players: <%=foundEvent.maxNumberofPlayers%><br/>
+                Minimum Players: <%=foundEvent.minNumberofPlayers%><br/>
+                Available Spots: <%=foundEvent.availableSpots%><br/>
+                Event Type: <%=foundEvent.type%><br/>
+                <img class="event-image" src='<%=foundEvent.image%>'><br/>
+            </section>
+            <section>
+                <a href="/events/<%=foundEvent._id%>/edit">Edit Event</a>
+            </section>
+        </main>
+        <%-include ../../partials/_footer.ejs%>
+    </body>
 </html>

@@ -26,6 +26,7 @@ app.use((req, res, next)=>{
     }
 next();
 }); 
+app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride("_method"));
 app.use('/events', eventsController);
