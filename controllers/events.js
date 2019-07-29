@@ -25,39 +25,41 @@ router.get('/new', (req, res) => {
   
   
 //   router.get('/:id/edit', (req, res) => {
-//     Event.findById(req.params.id, (err, foundAuthor) => {
+//     Event.findById(req.params.id, (err, foundEvent) => {
 //       if(err){
 //         res.send(err);
 //       } else {
-//         console.log(foundAuthor, "<---- edit route, document from mongodb")
-//         res.render('authors/edit.ejs', {
-//           author: foundAuthor
+//         console.log(foundEvent, "<---- edit route, document from mongodb")
+//         res.render('Events/edit.ejs', {
+//           Event: foundEvent
 //         });
 //       };
 //     });
 //   });
   
-//   router.put('/:id', (req, res) => {
+  router.get('/:id', (req, res) => {
   
-//     Author.findByIdAndUpdate(req.params.id, req.body,(err, updateResponse) => {
-//       if(err){
-//         res.send(err);
-//       } else {
-//         console.log(updateResponse, " <_-- put route response from db");
-//         res.redirect('/authors/' + req.params.id);
-//       }
-//     })
-//   })
+    Event.findById(req.params.id,(err, retrievedEvent) => {
+      if(err){
+        res.send(err);
+      } else {
+        console.log(retrievedEvent, " <_-- put route response from db");
+        res.render('events/show.ejs', {
+          event: retrievedEvent
+        });
+      }
+    })
+  });
   
 //   router.get('/:id', (req, res) => {
 //     console.log(req.params, " params in the show route")
-//     Author.findById(req.params.id, (err, foundAuthor) => {
+//     Event.findById(req.params.id, (err, foundEvent) => {
 //       if(err){
 //         res.send(err);
 //       } else {
-//         console.log(foundAuthor, ' <-- show route document from model');
-//         res.render('authors/show.ejs', {
-//           author: foundAuthor
+//         console.log(foundEvent, ' <-- show route document from model');
+//         res.render('Events/show.ejs', {
+//           Event: foundEvent
 //         });
 //       };
 //     });
@@ -65,12 +67,12 @@ router.get('/new', (req, res) => {
   
 //   router.delete('/:id', (req, res) => {
   
-//     Author.findOneAndDelete(req.params.id, (err, response) => {
+//     Event.findOneAndDelete(req.params.id, (err, response) => {
 //       if(err){
 //         res.send(err);
 //       } else {
 //         console.log(response, " <--- Delete route")
-//         res.redirect('/authors');
+//         res.redirect('/Events');
 //       };
 //     });
 //   });
@@ -78,7 +80,10 @@ router.get('/new', (req, res) => {
   
   router.post('/', (req, res) => {
     // req.body is the information from the form
-    console.log(req.body, ' req.body')
+    console.log(req.body, ' req.body in post route')
+    console.log(req.session.userId, 'req.session.userId')
+    req.body.host = req.session.userId;
+    console.log(req.body.host, " req.body.host in post route")
     Event.create(req.body, (err, createdEvent) => {
       if(err){
         res.send(err);

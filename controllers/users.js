@@ -29,6 +29,29 @@ router.get("/new", async (req, res)=>{
     }
 });
 
+//login route, handles login request coming from home page
+router.post('/login', async (req, res)=>{
+    try{
+        const foundUser = await User.findOne({email:req.body.email});
+        console.log(foundUser, "<---found user in login route.");
+        req.session.userId = foundUser._id;
+        if (foundUser){
+            console.log(bcrypt.compareSync(req.body.password, foundUser.password), "<---compareSync in login")
+            if(bcrypt.compareSync(req.body.password, foundUser.password)){
+                req.session.userId = foundUser._id;
+            } else {
+                req.session.message = "Incorrect username or password."
+            }
+        } else {
+            req.session.message = "Incorrect username or password."
+        }
+        res.redirect('/events/');
+    } catch(err){
+        console.log(err, "<----error in user login route");
+        res.send(err);
+    }
+});
+
 //show route for a user
 router.get('/:id', async (req, res)=>{
     try{
@@ -106,27 +129,7 @@ router.delete('/:id', async (req, res)=>{
     }
 })
 
-//login route, handles login request coming from home page
-router.get('/login', async (req, res)=>{
-    try{
-        const foundUser = await User.findOne({email:req.body.email});
-        console.log(foundUser, "<---found user in login route.")
-        if (foundUser){
-            console.log(bcrypt.compareSync(req.body.password == req.session.password), "<---compareSync in login")
-            if(bcrypt.compareSync(req.body.password == req.session.password)){
-                req.session.userId = foundUser._id;
-            } else {
-                req.session.message = "Incorrect username or password."
-            }
-        } else {
-            req.session.message = "Incorrect username or password."
-        }
-        res.redirect('/events/');
-    } catch(err){
-        console.log(err, "<----error in user login route");
-        res.send(err);
-    }
-});
+
 
 module.exports = router;
 

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const connectionString = "mongodb://localhost/dtp";
 mongoose.connect(connectionString, {
-    useNewUrlParser: true
+    useNewUrlParser: true,
     useCreateIndex: true});
 
 mongoose.connection.on("connected", ()=>{
