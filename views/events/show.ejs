@@ -4,26 +4,26 @@
     <body>
         <header>
             <%-include ../../partials/_navbar.ejs%> 
-            <h1><%=foundEvent.name%></h1>
+            <h1><%=event.name%></h1>
         </header>
         <main>
             <section>
-                Name: <%=foundEvent.name%><br/>
-                Date: <%=foundEvent.date%><br/>
-                Time: <%=foundEvent.time%><br/>
-                Location: <%=foundEvent.location%><br/>
-                Host:   <%=foundEvent.host%><br/>
-                Contact Info: <%=foundEvent.host.contactInfo%><br/>
-                Game: <%=foundEvent.gameToBePlayed%><br/>
-                Description: <%=foundEvent.description%><br/>
-                Maximum Players: <%=foundEvent.maxNumberofPlayers%><br/>
-                Minimum Players: <%=foundEvent.minNumberofPlayers%><br/>
-                Available Spots: <%=foundEvent.availableSpots%><br/>
-                Event Type: <%=foundEvent.type%><br/>
-                <img class="event-image" src='<%=foundEvent.image%>'><br/>
+                Name: <%=event.name%><br/>
+                Date: <%=event.date%><br/>
+                Time: <%=event.time%><br/>
+                Location: <%=event.location%><br/>
+                Host:   <%=event.host.name%><br/>
+                Contact Info: <%=event.host.contactInfo%><br/>
+                Game: <%=event.gameToBePlayed%><br/>
+                Description: <%=event.description%><br/>
+                Maximum Players: <%=event.maxNumberofPlayers%><br/>
+                Minimum Players: <%=event.minNumberofPlayers%><br/>
+                Available Spots: <%=event.availableSpots%><br/>
+                Event Type: <%=event.type%><br/>
+                <img class="event-image" src='<%=event.image%>'><br/>
             </section>
             <section>
-                <a href="/events/<%=foundEvent._id%>/edit">Edit Event</a>
+                <a href="/events/<%=event._id%>/edit">Edit Event</a>
             </section>
         </main>
         <%-include ../../partials/_footer.ejs%>
