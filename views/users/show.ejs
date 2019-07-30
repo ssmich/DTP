@@ -8,7 +8,7 @@
         </header>
         <main>
             <ul><%=user.name%>'s Events
-                <%eventsBeingHosted.forEach(function(event){%>
+                <%events.forEach(function(event){%>
                     <a href="/events/<%=event._id%>"<li><%=event.name%></li></a>
                 <%})%>
             </ul> 

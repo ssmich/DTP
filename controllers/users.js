@@ -31,6 +31,17 @@ router.get("/new", async (req, res)=>{
     }
 });
 
+router.get('/login', async (req, res)=>{
+    console.log("in login route");
+    try{
+        res.render('users/login.ejs');
+    } 
+    catch(err){
+        console.log(err);
+        res.send(err);
+    }
+})
+
 //login route, handles login request coming from home page
 router.post('/login', async (req, res)=>{
     try{
@@ -63,7 +74,7 @@ router.get('/:id', async (req, res)=>{
         console.log(eventsBeingHosted, "<----events hosted by user in show route, host NOT populated")
         res.render('users/show.ejs', {
             user: user,
-            event: eventsBeingHosted
+            events: eventsBeingHosted
         });
     } 
     catch(err){

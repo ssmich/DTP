@@ -36,6 +36,7 @@ router.get('/new', (req, res) => {
     });
   });
 
+  //post route to add event id to logged in user
   router.post('/:id', async (req,res)=>{
     try{
         console.log(req.session, 'this is the req.session')
@@ -53,34 +54,35 @@ router.get('/new', (req, res) => {
     }
    })
   
-  router.get('/:id', (req, res) => {
-    Event.findById(req.params.id,(err, foundEvent) => {
-      if(err){
-        res.send(err);
-      } else {
-        console.log(foundEvent, " <_-- put route response from db");
-        res.render('events/show.ejs', {
-          event: foundEvent
-        });
-      }
-    })
+  router.get('/:id', async (req, res) => {
+    try{
+      const foundEvent = await Event.findById(req.params.id).populate('host');
+      console.log(foundEvent, '<----found event in show route')
+      res.render('events/show.ejs', {event: foundEvent});
+    } catch(err){
+      console.log(err);
+      res.send(err);
+    }
   });
 
-  router.post('/', (req, res) => {
+  //post route to create new event
+  router.post('/', async (req, res) => {
     // req.body is the information from the form
-    console.log(req.body, ' req.body in post route')
-    console.log(req.session.userId, 'req.session.userId')
-    req.body.host = req.session.userId;
-    console.log(req.body.host, " req.body.host in post route")
-    Event.create(req.body, (err, createdEvent) => {
-      if(err){
-        res.send(err);
-      } else {
-        console.log(createdEvent, ' < createdEvent in post route');
-        res.redirect('/events')
-      }
-    });
-  })
+    try{
+      console.log(req.body, ' req.body in post route')
+      console.log(req.session.userId, 'req.session.userId')
+      req.body.host = req.session.userId;
+      console.log(req.body.host, " req.body.host in post route")
+      const createdEvent = await Event.create(req.body);
+      createdEvent.populate('host');
+      console.log(createdEvent, ' < createdEvent in post route');
+      res.redirect('/events/')
+    } catch(err){
+      console.log(err, "error in post route to make new game");
+      res.send(err);
+    }  
+});
+
   
   router.put('/:id', (req, res) => {
     console.log(req.params, " params in the show route")
@@ -89,9 +91,7 @@ router.get('/new', (req, res) => {
         res.send(err);
       } else {
         console.log(updatedEvent, ' <-- show route document from model');
-        res.render('Events/show.ejs', {
-          updatedEvent: updatedEvent
-        });
+        res.redirect('/events/' + updatedEvent._id);
       };
     });
   });

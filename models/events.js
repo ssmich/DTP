@@ -3,7 +3,7 @@ const eventSchema = new mongoose.Schema({
     name: {type:String, required:true},
     gameToBePlayed: {type:String, required:true},
     location: {type:String, required:true},
-    host: {type:mongoose.Schema.Types.ObjectId, ref:"User"},
+    host: {type: mongoose.Schema.Types.ObjectId, ref:"User"},
     maxNumberOfPlayers: Number,
     minNumberOfPlayers: Number,
     availableSpots: Number,
