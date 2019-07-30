@@ -89,9 +89,7 @@ router.get('/new', (req, res) => {
         res.send(err);
       } else {
         console.log(updatedEvent, ' <-- show route document from model');
-        res.render('Events/show.ejs', {
-          updatedEvent: updatedEvent
-        });
+        res.redirect('/events/'+req.params.id);  
       };
     });
   });
