@@ -4,14 +4,55 @@
     <body>
         <header>
             <%-include ../../partials/_navbar.ejs%>
+            <img class="user-image" src="<%=user.picture%>"> 
             <h1><%=user.name%>'s Show Page</h1>
         </header>
         <main>
-            <ul><%=user.name%>'s Events
-                <%eventsBeingHosted.forEach(function(event){%>
-                    <a href="/events/<%=event._id%>"<li><%=event.name%></li></a>
+            <%if(message){%>
+            <script>
+            alert('<%=message%>');
+            </script>
+            <%}%>
+            <ul><%=user.name%>'s Hosting:
+                <%if(event){%>
+                <%event.forEach(function(event){%>
+                    <form action="/events/<%=event._id%>?_method=DELETE" method="POST">
+                    <li><a href="/events/<%=event._id%>"<li><%=event.name%></a>
+                    <span>
+                    <input type="submit" name="" value="Delete Game">
+                    </span>
+                    </li>
+                    </form>
                 <%})%>
-            </ul> 
+                <%}%>
+            </ul>
+            <ul><%=user.name%>'s Events:
+                <%if(!user.event){%>
+                <p>No events yet<p>
+                <%}%> 
+            </ul>
+            
+            <p><%=session.userId%></p>
+            
+            <div class="card" id="user-card">
+                <ul>
+                Name: <%=user.name%><br/>
+                email: <%=user.email%><br/>
+                password: <%=user.password%><br/>
+                contactInfo: <%=user.contactInfo%><br/>
+                user icon:<br/>
+                playerRating:<%=user.playerRating%><br/>
+                hostRating: <%=user.hostRating%><br/>
+                bio: <%=user.bio%><br/>
+                eventPreferences: <%=user.eventPreferences%><br/>
+            </div>
+            <div>Account Edits: 
+                <div><a href="/users/<%=user._id%>/edit">Edit <%=user.name%>'s Info</a></div>
+                <form action="/users/<%=user._id%>?_method=DELETE" method="POST">
+                    <input type="submit" name="" value="Delete Account">
+                </form>
+            </div>
+            
         </main> 
         <%-include ../../partials/_footer.ejs%>
     </body>
