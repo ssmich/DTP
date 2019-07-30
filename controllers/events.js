@@ -18,12 +18,18 @@ router.get('/', (req, res) => {
     })
   
   });
-
-router.get('/new', (req, res) => {
-    res.render('events/new.ejs')
-  });
-  
+  router.get('/new', (req, res) => {
+    if(req.session.userID){
+      res.render('events/new.ejs');
+    } else {
+    /// ***ALERT***
+//  res.render('users/login.ejs');
+    req.session.message = "Please login to host a game."
+    res.render('users/new.ejs');
+    }
+})
   router.get('/:id/edit', (req, res) => {
+    // if(req.session.userID){
     Event.findById(req.params.id, (err, foundEvent) => {
       if(err){
         res.send(err);
@@ -34,10 +40,14 @@ router.get('/new', (req, res) => {
         });
       };
     });
-  });
+  // } else {
+  //   // ***ALERT***
+  //   res.render("/users/login");
+  // }
+});
 
   router.post('/:id', async (req,res)=>{
-    try{
+      try{
         console.log(req.session, 'this is the req.session')
         const foundEvent = await Event.findById(req.params.id);
         const foundUser = await User.findById(req.session.userId)
@@ -47,16 +57,16 @@ router.get('/new', (req, res) => {
         res.render('events/show.ejs', {
           message: req.session.message,
           event: foundEvent
-        })
-    }catch(err){
+        });
+      }catch(err){
         res.send(err);
         console.log(err);
-    }
-   })
+      }
+    });
   
   router.get('/:id', (req, res) => {
     Event.findById(req.params.id,(err, foundEvent) => {
-      if(err){
+      if(err){ß
         res.send(err);
       } else {
         console.log(foundEvent, " <_-- put route response from db");

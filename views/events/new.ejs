@@ -5,6 +5,11 @@
     <header>
       <h1>Create an Event</h1>
       <%-include ../../partials/_navbar.ejs%>
+      <%if(message){%>
+        <script>
+          alert('<%=message%>');
+        </script>
+      <%}%>       
     </header>
     <main>
         <form action="/events/" method="post">
