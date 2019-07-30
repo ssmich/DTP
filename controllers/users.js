@@ -31,6 +31,15 @@ router.get("/new", async (req, res)=>{
     }
 });
 
+router.get('/login', async (req, res)=>{
+    try{
+        res.render('users/login.ejs');
+    } catch(err){
+        console.log(err, "in get /users/login route");
+        res.send(err);
+    }
+})
+
 //login route, handles login request coming from home page
 router.post('/login', async (req, res)=>{
     try{
