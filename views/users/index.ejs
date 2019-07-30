@@ -9,8 +9,8 @@
         <main>
             <ul>List of Users
                 <%users.forEach(function(user){%>
-                    <li><a class="show-user-link" href="users/<%=user._id%>"><%=user.name%></a></li>
-                <%}%>
+                    <li><a class="show-user-link" href="/users/<%=user._id%>"><%=user.name%></a></li>
+                <%})%>
             </ul>
 
         </main>

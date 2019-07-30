@@ -42,6 +42,17 @@ router.get("/new", async (req, res)=>{
     }
 });
 
+router.get('/login', async (req, res)=>{
+    console.log("in login route");
+    try{
+        res.render('users/login.ejs');
+    } 
+    catch(err){
+        console.log(err);
+        res.send(err);
+    }
+})
+
 //login route, handles login request coming from home page
 router.post('/login', async (req, res)=>{
     try{
@@ -67,6 +78,24 @@ router.post('/login', async (req, res)=>{
 
 //show route for a user
 router.get('/:id', async (req, res)=>{
+
+    try{
+        const user = await User.findById(req.params.id).populate("event");
+        if(req.params.id===req.session.userId && user){
+        
+        console.log(user, "<----user in show route, event populated")
+        const eventsBeingHosted = await Event.find({host: user._id})
+        console.log(eventsBeingHosted, "<----events hosted by user in show route, host NOT populated")
+        res.render('users/show.ejs', {
+            user: user,
+            events: eventsBeingHosted
+        });
+        } else{
+            //***ALERT***/
+            req.session.message = "You do not have required credentials for this page"
+            console.log(req.session.message, "alert message","page redirected due to credentials")
+            res.redirect('/events/');
+
     if(req.session.userID){
         try{
             const user = await User.findById(req.params.id).populate("event");
@@ -89,8 +118,7 @@ router.get('/:id', async (req, res)=>{
         catch(err){
             console.log(err, "<---error in user show route");
             res.send(err);
-        }
-    }
+
 });
 //edit route for user
 router.get('/:id/edit', async (req, res)=>{

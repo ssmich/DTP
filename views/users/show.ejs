@@ -14,8 +14,7 @@
             </script>
             <%}%>
             <ul><%=user.name%>'s Hosting:
-                <%if(event){%>
-                <%event.forEach(function(event){%>
+                <%if(event){%>>
                     <form action="/events/<%=event._id%>?_method=DELETE" method="POST">
                     <li><a href="/events/<%=event._id%>"<li><%=event.name%></a>
                     <span>
