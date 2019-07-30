@@ -70,22 +70,26 @@ router.get('/:id', async (req, res)=>{
     if(req.session.userID){
         try{
             const user = await User.findById(req.params.id).populate("event");
-            console.log(user, "<----user in show route, event populated")
-            const eventsBeingHosted = await Event.find({host: user._id});
-            console.log(eventsBeingHosted, "<----events hosted by user in show route, host NOT populated")
-            res.render('users/show.ejs', {
-                user: user,
-                event: eventsBeingHosted
-            });
+                if(req.params.id===req.session.userId && user){        
+                    console.log(user, "<----user in show route, event populated")
+                    const eventsBeingHosted = await Event.find({host: user._id})
+                    console.log(eventsBeingHosted, "<----events hosted by user in show route, host NOT populated")
+                    res.render('users/show.ejs', {
+                        user: user,
+                        event: eventsBeingHosted,
+                        session: req.session.userId
+                    });
+                } else {
+                //***ALERT***/
+                req.session.message = "You do not have required credentials for this page"
+                console.log(req.session.message, "alert message","page redirected due to credentials")
+                res.redirect('/events/');
+                }
         } 
         catch(err){
             console.log(err, "<---error in user show route");
             res.send(err);
-        } 
-    } else {
-    //  res.render('users/login.ejs')
-        req.session.message = "Please login to access your personal page."
-        res.render('/users/new.ejs')
+        }
     }
 });
 //edit route for user

@@ -4,33 +4,33 @@
     <body>
         <header>
             <%-include ../../partials/_navbar.ejs%>
-            <h1>Edit <%=foundEvent.name%></h1>
+            <h1>Edit <%=event.name%></h1>
         </header>
         <main>
             <h2>Event Info:</h2>
-            <form action="/events/<%=foundEvent._id%>?_method=PUT" method="post">
+            <form action="/events/<%=event._id%>?_method=PUT" method="post">
                 Edit Event Name:
-                    <input type="text" name="name" value="<%=foundEvent.name%>"/><br/>
+                    <input type="text" name="name" value="<%=event.name%>"/><br/>
                 Edit Date:
-                    <input type="date" name="date" value="<%=foundEvent.date%>"/><br/>
+                    <input type="date" name="date" value="<%=event.date%>"/><br/>
                 Edit Time:
-                    <input type="text" name="time" value="<%=foundEvent.time%>"/><br/>
+                    <input type="text" name="time" value="<%=event.time%>"/><br/>
                 Edit Game:
-                    <input type="text" name="gameToBePlayed" value="<%=foundEvent.gameToBePlayed%>"/><br/>
+                    <input type="text" name="gameToBePlayed" value="<%=event.gameToBePlayed%>"/><br/>
                 Edit Maximum Players:
-                    <input type="number" name="maxNumberOfPlayers" value="<%=foundEvent.maxNumberofPlayers%>"/><br/>
+                    <input type="number" name="maxNumberOfPlayers" value="<%=event.maxNumberofPlayers%>"/><br/>
                 Edit Minimum Players:
-                    <input type="number" name="minNumberOfPlayers" value="<%=foundEvent.minNumberofPlayers%>"/><br/>
+                    <input type="number" name="minNumberOfPlayers" value="<%=event.minNumberofPlayers%>"/><br/>
                 Edit Available Spots:
-                    <input type="number" name="availableSpots" value="<%=foundEvent.availableSpots%>"/><br/>
+                    <input type="number" name="availableSpots" value="<%=event.availableSpots%>"/><br/>
                 Edit Location:
-                    <input type="text" name="location" value="<%=foundEvent.location%>"/><br/>
+                    <input type="text" name="location" value="<%=event.location%>"/><br/>
                 Edit Description:
-                    <textarea name="description"><%=foundEvent.description%></textarea><br/>
+                    <textarea name="description"><%=event.description%></textarea><br/>
                 Edit Type:
-                    <input type="text" name="type" value="<%=foundEvent.type%>"/><br/>
+                    <input type="text" name="type" value="<%=event.type%>"/><br/>
                 Edit Image URL:
-                    <input type="text" name="image" value="<%=foundEvent.image%>"/><br/>
+                    <input type="text" name="image" value="<%=event.image%>"/><br/>
                 <input type="submit" value="Update Event Info"/>
             </form>
         </main>

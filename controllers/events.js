@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
         // we can make folders in our views
         // to seperate each resource
         res.render('events/index.ejs', {
-          event: foundEvents
+          events: foundEvents
         });
       }
     })
@@ -55,7 +55,6 @@ router.get('/', (req, res) => {
         req.session.message = "You've been added to game"
         console.log(foundUser);
         res.render('events/show.ejs', {
-          message: req.session.message,
           event: foundEvent
         });
       }catch(err){
@@ -100,9 +99,7 @@ router.get('/', (req, res) => {
         res.send(err);
       } else {
         console.log(updatedEvent, ' <-- show route document from model');
-        res.render('Events/show.ejs', {
-          updatedEvent: updatedEvent
-        });
+        res.redirect('/events/'+req.params.id);  
       };
     });
   });

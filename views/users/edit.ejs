@@ -4,24 +4,36 @@
     <body>
         <header>
             <%-include ../../partials/_navbar.ejs%>
-            <h1>Edit <%=foundUser.name%>'s Information</h1>
+            <h1>Edit <%=user.name%>'s Information</h1>
         </header>
         <main>
-            <form action="/users/<%=foundUser._id%>?_method=PUT" method="POST">
+            <form action="/users/<%=user._id%>?_method=PUT" method="POST">
+                Account Information: 
                 Edit Name: 
-                    <input type="text" name="name" value="name"><br/>
-                Edit Password: 
-                    <input type="password" name="oldPassword" placeholder="Enter Old Password" value=""><br/>
-                    <input type="password" name="newPassword" placeholder="Enter New Password" value=""><br/>
+                    <input type="text" name="name" value="<%=user.name%>"><br/>
                 Edit Email Address: 
-                    <input type="email" name="email" placeholder="Enter New Email Address" value=""><br/>
-                Edit Preferred Contact Information: 
+                    <input type="email" name="email" placeholder="Enter New Email Address" value="<%=user.email%>"><br/>
+                Edit User Icon: 
+                    <input type="text" name="picture" placeholder="enter a new url" value="<%=user.picture%>"><br/>
+                
+                
+                Edit Preferred Contact Method: 
                     <select name="contactStyle">
                         <option value="none">Use my...</option>
                         <option value="email">email address</option>
                         <option value="phone">phone Number</option>
-                    </select>
-                    <input type="text" name="contactInfo" placeholder="Contact Information"value=""><br/>
+                    </select><br/>
+                    
+                    Edit Contact Info: <input type="text" name="contactInfo" placeholder="Contact Information" value="<%=user.contactInfo%>"><br/>
+                    <br/><br/>
+                
+                User Preferences: <br/>
+                Bio: <input type="text" name="bio" placeholder="Share your story" value="<%=user.bio%>"><br/>
+                What kind of events do you like?: <input type="text" name="eventPreferences" placeholder="Favorite Events ..." value="<%=user.eventPreferences%>"><br/><br/>
+                    
+                
+                <br/>
+                <input type="submit" value="Update Your Account"/>
             </form>
         </main>
         <%-include ../../partials/_footer.ejs%>
