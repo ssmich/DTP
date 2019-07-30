@@ -20,28 +20,44 @@ router.get('/', (req, res) => {
   });
 
 router.get('/new', (req, res) => {
-    res.render('events/new.ejs')
-  });
-  
+    if(req.session.userID){
+      res.render('events/new.ejs');
+    } else {
+    /// ***ALERT***
+//  res.render('users/login.ejs');
+    req.session.message = "Please login to host a game."
+    res.render('users/new.ejs');
+    }
+})
   router.get('/:id/edit', async (req, res) => {
+    
+    if(req.session.userID){
+      
     try{
       const foundEvent = await Event.findById(req.params.id);
       if(req.session.userId == foundEvent.host.toString()){
       console.log(foundEvent, "<---- inside edit route, document from mongodb");
-      res.render('Events/edit.ejs', {event: foundEvent})
-      } else {
+      res.render('Events/edit.ejs', {event: foundEvent});
+      } 
+        else {
         req.session.message = "Only the event host may edit this event.";
-        res.redirect('/events/'+req.params.id);
-      }
-    } catch(err){
+        res.redirect('/events/'+req.params.id);}
+    } 
+      
+      catch(err){
       console.log(err, "error in events edit route");
-      res.send(err);
-    }
+      res.send(err);}
   });
+    
+  } else {
+    // ***ALERT***
+    res.render("/users/login");
+  }
+});    
 
-  //post route to add event id to logged in user
-  router.post('/:id', async (req,res)=>{
-    try{
+//post route to add event id to logged in user
+router.post('/:id', async (req,res)=>{
+      try{
         console.log(req.session, 'this is the req.session')
         const foundEvent = await Event.findById(req.params.id);
         const foundUser = await User.findById(req.session.userId)
@@ -52,10 +68,10 @@ router.get('/new', (req, res) => {
     }catch(err){
         res.send(err);
         console.log(err);
-    }
-   })
+      }
+});
   
-  router.get('/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
     try{
       const foundEvent = await Event.findById(req.params.id).populate('host');
       console.log(foundEvent, '<----found event in show route')
@@ -64,6 +80,18 @@ router.get('/new', (req, res) => {
       console.log(err);
       res.send(err);
     }
+
+  router.get('/:id', (req, res) => {
+    Event.findById(req.params.id,(err, foundEvent) => {
+      if(err){ß
+        res.send(err);
+      } else {
+        console.log(foundEvent, " <_-- put route response from db");
+        res.render('events/show.ejs', {
+          event: foundEvent
+        });
+      }
+    })
   });
 
   //post route to create new event
@@ -92,11 +120,7 @@ router.get('/new', (req, res) => {
         res.send(err);
       } else {
         console.log(updatedEvent, ' <-- show route document from model');
-<<<<<<< HEAD
-        res.redirect('/events/' + updatedEvent._id);
-=======
         res.redirect('/events/'+req.params.id);  
->>>>>>> master
       };
     });
   });
