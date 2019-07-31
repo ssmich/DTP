@@ -68,16 +68,18 @@ router.post('/login', async (req, res)=>{
     try{
         const foundUser = await User.findOne({email:req.body.email});
         console.log(foundUser, "<---found user in login route.");
-        req.session.userId = foundUser._id;
         if(foundUser){
+        req.session.userId = foundUser._id;
             console.log(bcrypt.compareSync(req.body.password, foundUser.password), "<---compareSync in login")
             if(bcrypt.compareSync(req.body.password, foundUser.password)){
                 req.session.userId = foundUser._id;
             } else {
                 req.session.message = "Incorrect username or password."
+                res.redirect('/users/login');
             }
         } else {
             req.session.message = "Incorrect username or password."
+            res.redirect('/users/login');
         }
         res.redirect('/events/');
     } catch(err){
@@ -178,19 +180,21 @@ router.post('/', async (req, res)=>{
 });
 
 router.delete('/:id', async (req, res)=>{
-    if(admin){
+    // if(admin){
         try{
+        req.session.userId = null;
+        req.session.message = "User account successfully deleted."
         const deletedUser = await User.findByIdAndDelete(req.params.id);
-        res.redirect('/users/')
+        res.redirect('/events/')
         }
         catch(err){
         console.log(err);
         res.send(err);
         }
     // change as needed
-    } else {
-        res.redirect('/users/new')
-    }
+    // } else {
+    //     res.redirect('/users/new')
+    // }
 });
 
 

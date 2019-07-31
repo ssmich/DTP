@@ -13,7 +13,7 @@
             </script>
         <%}%>
         <section> Currently Playing:
-        <%if(user._id == event.host._id.toString()){%>
+        <%if(user && user._id == event.host._id.toString()){%>
             <%players.forEach(function(player){%>
                 <p class="player-name"><%=player.name%></p>
             <%})%>

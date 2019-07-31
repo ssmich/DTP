@@ -49,9 +49,8 @@ app.use(methodOverride("_method"));
 app.use('/events', eventsController);
 app.use('/users', usersController);
 
-
-
-app.get('/', (req, res)=>{
+app.get('/', async (req, res)=>{
+    const user = await User.findById(req.session.userId);
     res.render('home/index.ejs')
 });
 
