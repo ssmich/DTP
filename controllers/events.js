@@ -31,25 +31,24 @@ router.get('/new', (req, res) => {
 })
   router.get('/:id/edit', async (req, res) => {
     
-    if(req.session.userID){
-      
+  if(req.session.userID){
     try{
       const foundEvent = await Event.findById(req.params.id);
+      
       if(req.session.userId == foundEvent.host.toString()){
-      console.log(foundEvent, "<---- inside edit route, document from mongodb");
-      res.render('Events/edit.ejs', {event: foundEvent});
+        console.log(foundEvent, "<---- inside edit route, document from mongodb");
+        res.render('Events/edit.ejs', {event: foundEvent});
       } 
         else {
         req.session.message = "Only the event host may edit this event.";
-        res.redirect('/events/'+req.params.id);}
-    } 
-      
-      catch(err){
-      console.log(err, "error in events edit route");
-      res.send(err);}
-  });
-    
-  } else {
+        res.redirect('/events/'+req.params.id);
+      }
+    } catch(err){
+          console.log(err, "error in events edit route");
+          res.send(err);
+    }
+  }
+  else {
     // ***ALERT***
     res.render("/users/login");
   }
@@ -80,6 +79,7 @@ router.get('/:id', async (req, res) => {
       console.log(err);
       res.send(err);
     }
+});
 
   router.get('/:id', (req, res) => {
     Event.findById(req.params.id,(err, foundEvent) => {
@@ -125,27 +125,28 @@ router.get('/:id', async (req, res) => {
     });
   });
   
-  router.delete('/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try{
-      console.log('in delete route');
-      const foundEvent = await Event.findById(req.params.id).populate('host');
-      const users = await User.find({event: req.params.id}).populate('event');
-      if(req.session.userId == foundEvent.host._id.toString()){
-        const deletedEvent = await foundEvent.remove();
-        console.log(deletedEvent, "<----deletedEvent in delete route");
-        req.session.message = "Event Deleted"
-        users.forEach(function(user){
-          user.event = null;
-        });
-      res.redirect('/events/');
-      } else {
-          req.session.message = "Only the host may delete this event"
+        console.log('in delete route');
+        const foundEvent = await Event.findById(req.params.id).populate('host');
+        const users = await User.find({event: req.params.id}).populate('event');
+        if(req.session.userId == foundEvent.host._id.toString()){
+            const deletedEvent = await foundEvent.remove();
+            console.log(deletedEvent, "<----deletedEvent in delete route");
+            req.session.message = "Event Deleted"
+            users.forEach(function(user){
+                user.event = null;
+            });
+            res.redirect('/events/');
+        } 
+        else {
+            req.session.message = "Only the host may delete this event"
         }
-      res.redirect('/events/' + req.params.id);
-      } catch (err){
-      console.log(err);
-      res.send(err);
+        res.redirect('/events/' + req.params.id);
+    } catch (err){
+        console.log(err);
+        res.send(err);
     }
-  });
+});
   
 module.exports = router;
