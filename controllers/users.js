@@ -48,16 +48,17 @@ router.get('/login', async (req, res)=>{
         res.render('users/login.ejs');
     } 
     catch(err){
-        console.log(err);
+        console.log(err, "in login route");
         res.send(err);
     }
-})
+});
 
-router.get('/login', async (req, res)=>{
+router.get('/logout', async (req, res)=>{
     try{
-        res.render('users/login.ejs');
+        await req.session.destroy();
+        res.redirect("/")
     } catch(err){
-        console.log(err, "in get /users/login route");
+        console.log(err);
         res.send(err);
     }
 })

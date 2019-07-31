@@ -25,7 +25,7 @@ router.get('/new', (req, res) => {
     } else {
     /// ***ALERT***
     req.session.message = "Please login to host a game."
-    res.render('users/new.ejs');
+    res.redirect('/users/new');
     }
 });
   router.get('/:id/edit', async (req, res) => {

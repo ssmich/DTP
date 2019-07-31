@@ -14,15 +14,17 @@
             </script>
             <%}%>
             <ul><%=user.name%>'s Hosting:
-                <%if(event){%>>
+                <%if(events){%>>
+                <%events.forEach(function(event){%>
                     <form action="/events/<%=event._id%>?_method=DELETE" method="POST">
-                    <li><a href="/events/<%=event._id%>"<li><%=event.name%></a>
-                    <span>
-                    <input type="submit" name="" value="Delete Game">
-                    </span>
-                    </li>
+                        <li><a href="/events/<%=event._id%>"<li><%=event.name%></a>
+                        <span>
+                            <input type="submit" name="" value="Delete Game">
+                        </span>
+                        </li>
                     </form>
                 <%})%>
+                    
                 <%}%>
             </ul>
             <ul><%=user.name%>'s Events:
@@ -31,7 +33,7 @@
                 <%}%> 
             </ul>
             
-            <p><%=session.userId%></p>
+            <p><%=currentUser%></p>
             
             <div class="card" id="user-card">
                 <ul>
