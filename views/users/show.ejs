@@ -8,11 +8,7 @@
             <h1><%=user.name%>'s Show Page</h1>
         </header>
         <main>
-            <%if(message){%>
-            <script>
-            alert('<%=message%>');
-            </script>
-            <%}%>
+            <%-include ../../partials/_alert.ejs%>
             <ul><%=user.name%>'s Hosting:
                 <%if(events){%>>
                 <%events.forEach(function(event){%>
@@ -29,7 +25,9 @@
             </ul>
             <ul><%=user.name%>'s Events:
                 <%if(!user.event){%>
-                <p>No events yet<p>
+                  <p>No events yet<p>
+                <%} else {%>
+                    <p><%=user.event.name%></p>
                 <%}%> 
             </ul>
             
@@ -46,6 +44,7 @@
                 hostRating: <%=user.hostRating%><br/>
                 bio: <%=user.bio%><br/>
                 eventPreferences: <%=user.eventPreferences%><br/>
+                </ul>
             </div>
             <div>Account Edits: 
                 <div><a href="/users/<%=user._id%>/edit">Edit <%=user.name%>'s Info</a></div>

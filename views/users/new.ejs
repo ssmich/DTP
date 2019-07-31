@@ -2,35 +2,17 @@
 <html lang="en">
     <%-include ../../partials/_head.ejs%>
     <body>
-        <h1>Register New User</h1>
-        <%if(message){%>
-          <script>
-            alert('<%=message%>');
-          </script>
-        <%}%>
-        <form action="/users/" method="POST">
-        <input value="" placeholder="Name" type="text" name='name'>
-        <input value="" placeholder="Email Address" type="email" name='email'>
-        <input value="" placeholder="Password" type="password" name='password'>
-        <input type="submit" value="Register">
-      </form>
         <header>
-            <%-include ../../partials/_navbar.ejs%>
-        <h1>Register New User</h1>
-            <%if(message){%>
-          <script>
-            alert('<%=message%>');
-          </script>
-        <%}%>        
+          <%-include ../../partials/_navbar.ejs%>
+          <h1>Register New User</h1>        
         </header>
         <main>
-            <h1>Register New User</h1>
             <%if(message){%>
               <script>
                 alert('<%=message%>');
               </script>
             <%}%>
-            <form action="/users/" method="POST">
+          <form action="/users/" method="POST">
             <input value="" placeholder="Name" type="text" name='name'>
             <input value="" placeholder="Email Address" type="email" name='email'>
             <input value="" placeholder="Password" type="password" name='password'>

@@ -3,7 +3,7 @@ const router = express.Router();
 const User = require('../models/users');
 const Event = require('../models/events');
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
     Event.find({}, (err, foundEvents) => {
       if(err){
         res.send(err);
@@ -65,10 +65,10 @@ router.post('/:id', async (req,res)=>{
       try{
         console.log(req.session, 'this is the req.session')
         const foundEvent = await Event.findById(req.params.id);
-        const foundUser = await User.findById(req.session.userId)
+        const foundUser = await User.findById(req.session.userId);
         foundUser.event = req.params.id;
         foundUser.save();
-        req.session.message = "You've been added to the event."
+        req.session.message = "You have been added to the event."
         console.log(foundUser);
         res.redirect("/events/" + req.params.id);
     }catch(err){
@@ -85,7 +85,7 @@ router.post('/:id', async (req,res)=>{
       console.log(foundUser, " <--- found user in show route");
       const foundPlayers = await User.find({event:req.params.id});
       console.log(foundPlayers, " <--- found players in show route");
-      console.log(foundUser._id.toString() == foundEvent.host._id.toString(), "<--foundUser._id == foundEvent._host.id")
+      // console.log(foundUser._id.toString() == foundEvent.host._id.toString(), "<--foundUser._id == foundEvent._host.id")
       res.render('events/show.ejs', {
           event: foundEvent,
           user: foundUser,
@@ -108,7 +108,7 @@ router.post('/:id', async (req,res)=>{
       const createdEvent = await Event.create(req.body);
       createdEvent.populate('host');
       console.log(createdEvent, ' < createdEvent in post route');
-      res.redirect('/events/')
+      res.redirect('/events/' + createdEvent._id)
     } catch(err){
       console.log(err, "error in post route to make new game");
       res.send(err);
