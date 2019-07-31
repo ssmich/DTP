@@ -19,14 +19,25 @@ router.get('/', (req, res) => {
   
   });
 
-router.get('/new', (req, res) => {
-    if(req.session.userId){
-      res.render('events/new.ejs');
-    } else {
-    /// ***ALERT***
-    req.session.message = "Please login to host a game."
-    res.redirect('/users/new');
-    }
+router.get('/new', async (req, res) => {
+    try{
+      //why does this work!?!? Without the line below, error thrown when rendering events/new.ejs
+      //error says "currentUserName is not defined."
+      //With currentUserName commented out, just creating "user" below still works!?!?!
+      const user = await User.findById(req.session.userId);
+      if(req.session.userId){
+        res.render('events/new.ejs', {
+          // currentUserName: user.name
+        });
+      } else {
+      /// ***ALERT***
+      req.session.message = "Please login to host a game."
+      res.redirect('/users/new');
+      }
+    } catch(err){
+      console.log(err, "<--error in new events route");
+      res.send(err);
+    }    
 });
   router.get('/:id/edit', async (req, res) => {
     try{

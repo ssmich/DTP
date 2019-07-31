@@ -25,6 +25,7 @@ app.use((req, res, next)=>{
                     console.log(user, "<-- user in res.locals middleware")
                     res.locals.currentUserName = user.name;
                     res.locals.currentUserEmail = user.email;
+                    console.log(res.locals.currentUserName, "<--res.locals.currentUserName")
                 }
             });
         } else {
