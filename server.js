@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const methodOverride = require('method-override');
+const User = require('./models/users')
 const app = express();
 
 require('./db/db');
@@ -16,6 +17,21 @@ app.use(session({
   //which is why you're asked to accept that a site will use cookies
 }));
 app.use((req, res, next)=>{
+        if(req.session.userId){
+            User.findById(req.session.userId, (err, user)=>{
+                if(err){
+                    console.log(err, "<-- error in res.locals middleware")
+                } else {
+                    console.log(user, "<-- user in res.locals middleware")
+                    res.locals.currentUserName = user.name;
+                    res.locals.currentUserEmail = user.email;
+                }
+            });
+        } else {
+            res.locals.currentUserName = null;
+            res.locals.currentUserEmail = null;
+            console.log("res.locals variables in middleware set to null")
+        }
     res.locals.currentUser = req.session.userId;
     res.locals.message = null;
     if(req.session.message){
