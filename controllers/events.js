@@ -63,14 +63,20 @@ router.get('/new', async (req, res) => {
 //post route to add event id to logged in user
 router.post('/:id', async (req,res)=>{
       try{
-        console.log(req.session, 'this is the req.session')
-        const foundEvent = await Event.findById(req.params.id);
-        const foundUser = await User.findById(req.session.userId);
-        foundUser.event = req.params.id;
-        foundUser.save();
-        req.session.message = "You have been added to the event."
-        console.log(foundUser);
-        res.redirect("/events/" + req.params.id);
+        if(req.session.userId){
+          console.log(req.session, 'this is the req.session')
+          const foundEvent = await Event.findById(req.params.id);
+          const foundUser = await User.findById(req.session.userId);
+          foundUser.event = req.params.id;
+          foundUser.save();
+          req.session.message = "You have been added to the event."
+          console.log(foundUser);
+          res.redirect("/events/" + req.params.id);
+      }
+        else{
+          req.session.message = "You must login to join a game."
+          res.redirect('/users/login')
+      }
     }catch(err){
         res.send(err);
         console.log(err);
