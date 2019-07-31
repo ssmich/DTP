@@ -26,9 +26,9 @@ router.get('/', async (req, res)=>{
 
 //new route to form to register new user
 router.get("/new", async (req, res)=>{
-    if(req.session.userID){
-        console.log("in new controler", req.session);
-        console.log("in new controler", res.locals);
+    if(!req.session.userId){
+        console.log("req.session in new controller", req.session);
+        console.log("res.locals in new controller", res.locals);
         try{
             res.render('users/new.ejs');
         } catch(err){
@@ -38,7 +38,7 @@ router.get("/new", async (req, res)=>{
     } else {
         // ***ALERT***
         req.session.message = "You are currently logged in.";
-        res.redirect('/users/login');
+        res.redirect('/users/'+req.session.userId);
     }
 });
 
@@ -113,7 +113,7 @@ router.get('/:id', async (req, res)=>{
 
 //edit route for user
 router.get('/:id/edit', async (req, res)=>{
-    if(req.session.userID){
+    if(req.session.userId){
         try{
             const user = await User.findById(req.params.id).populate('event');
             console.log(user, "<---user in edit route, event populated");
@@ -136,7 +136,7 @@ router.get('/:id/edit', async (req, res)=>{
 
 //put route to update user
 router.put('/:id', async (req, res)=>{
-    if(req.session.userID){
+    if(req.session.userId){
         // if(admin){
             try{
                 const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body);

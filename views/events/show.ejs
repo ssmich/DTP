@@ -12,8 +12,20 @@
                 alert('<%=message%>');
             </script>
         <%}%>
+        <section> Currently Playing:
+        <%if(user._id == event.host._id.toString()){%>
+            <%players.forEach(function(player){%>
+                <p class="player-name"><%=player.name%></p>
+            <%})%>
+        <%} else {%>
+            <p><%=players.length%> Players</p>
+            <%}%>
+        </section>
+
+        
+
             <section class="player-list">
-            
+
             </section>
             <section class="card show-event-card">
                 Name: <%=event.name%><br/>

@@ -20,15 +20,14 @@ router.get('/', (req, res) => {
   });
 
 router.get('/new', (req, res) => {
-    if(req.session.userID){
+    if(req.session.userId){
       res.render('events/new.ejs');
     } else {
     /// ***ALERT***
-//  res.render('users/login.ejs');
     req.session.message = "Please login to host a game."
     res.render('users/new.ejs');
     }
-})
+});
   router.get('/:id/edit', async (req, res) => {
     
   if(req.session.userID){
@@ -60,7 +59,8 @@ router.post('/:id', async (req,res)=>{
         console.log(req.session, 'this is the req.session')
         const foundEvent = await Event.findById(req.params.id);
         const foundUser = await User.findById(req.session.userId)
-        foundUser.event = req.params.id
+        foundUser.event = req.params.id;
+        foundUser.save();
         req.session.message = "You've been added to the event."
         console.log(foundUser);
         res.redirect("/events/" + req.params.id);
@@ -70,28 +70,24 @@ router.post('/:id', async (req,res)=>{
       }
 });
   
-router.get('/:id', async (req, res) => {
+  router.get('/:id', async (req, res) => {
     try{
       const foundEvent = await Event.findById(req.params.id).populate('host');
-      console.log(foundEvent, '<----found event in show route')
-      res.render('events/show.ejs', {event: foundEvent});
-    } catch(err){
-      console.log(err);
-      res.send(err);
-    }
-});
-
-  router.get('/:id', (req, res) => {
-    Event.findById(req.params.id,(err, foundEvent) => {
-      if(err){ß
-        res.send(err);
-      } else {
-        console.log(foundEvent, " <_-- put route response from db");
-        res.render('events/show.ejs', {
-          event: foundEvent
+      console.log(foundEvent, " <--- found event in show route");
+      const foundUser = await User.findById(req.session.userId);
+      console.log(foundUser, " <--- found user in show route");
+      const foundPlayers = await User.find({event:req.params.id});
+      console.log(foundPlayers, " <--- found players in show route");
+      console.log(foundUser._id.toString() == foundEvent.host._id.toString(), "<--foundUser._id == foundEvent._host.id")
+      res.render('events/show.ejs', {
+          event: foundEvent,
+          user: foundUser,
+          players: foundPlayers
         });
+      } catch(err){
+        console.log(err);
+        res.send(err);
       }
-    })
   });
 
   //post route to create new event
