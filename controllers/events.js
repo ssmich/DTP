@@ -29,16 +29,17 @@ router.get('/new', (req, res) => {
     }
 });
   router.get('/:id/edit', async (req, res) => {
-    
-  if(req.session.userID){
     try{
+      if(!req.session.userId){
+        req.session.message="Login to edit an event."
+        res.redirect('/users/login')
+      }
       const foundEvent = await Event.findById(req.params.id);
-      
-      if(req.session.userId == foundEvent.host.toString()){
-        console.log(foundEvent, "<---- inside edit route, document from mongodb");
-        res.render('Events/edit.ejs', {event: foundEvent});
+      if(req.session.userId == foundEvent.host._id.toString()){
+        console.log(foundEvent, "<---- inside edit route, foundEvent");
+        res.render('events/edit.ejs', {event: foundEvent});
       } 
-        else {
+      else {
         req.session.message = "Only the event host may edit this event.";
         res.redirect('/events/'+req.params.id);
       }
@@ -46,11 +47,6 @@ router.get('/new', (req, res) => {
           console.log(err, "error in events edit route");
           res.send(err);
     }
-  }
-  else {
-    // ***ALERT***
-    res.render("/users/login");
-  }
 });    
 
 //post route to add event id to logged in user
