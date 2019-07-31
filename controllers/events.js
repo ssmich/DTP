@@ -20,39 +20,33 @@ router.get('/', (req, res) => {
   });
 
 router.get('/new', (req, res) => {
-    if(req.session.userID){
+    if(req.session.userId){
       res.render('events/new.ejs');
     } else {
     /// ***ALERT***
-//  res.render('users/login.ejs');
     req.session.message = "Please login to host a game."
     res.render('users/new.ejs');
     }
-})
+});
   router.get('/:id/edit', async (req, res) => {
-    
-    if(req.session.userID){
-      
     try{
+      if(!req.session.userId){
+        req.session.message="Login to edit an event."
+        res.redirect('/users/login')
+      }
       const foundEvent = await Event.findById(req.params.id);
-      if(req.session.userId == foundEvent.host.toString()){
-      console.log(foundEvent, "<---- inside edit route, document from mongodb");
-      res.render('Events/edit.ejs', {event: foundEvent});
+      if(req.session.userId == foundEvent.host._id.toString()){
+        console.log(foundEvent, "<---- inside edit route, foundEvent");
+        res.render('events/edit.ejs', {event: foundEvent});
       } 
-        else {
+      else {
         req.session.message = "Only the event host may edit this event.";
-        res.redirect('/events/'+req.params.id);}
-    } 
-      
-      catch(err){
-      console.log(err, "error in events edit route");
-      res.send(err);}
-  });
-    
-  } else {
-    // ***ALERT***
-    res.render("/users/login");
-  }
+        res.redirect('/events/'+req.params.id);
+      }
+    } catch(err){
+          console.log(err, "error in events edit route");
+          res.send(err);
+    }
 });    
 
 //post route to add event id to logged in user
@@ -61,7 +55,8 @@ router.post('/:id', async (req,res)=>{
         console.log(req.session, 'this is the req.session')
         const foundEvent = await Event.findById(req.params.id);
         const foundUser = await User.findById(req.session.userId)
-        foundUser.event = req.params.id
+        foundUser.event = req.params.id;
+        foundUser.save();
         req.session.message = "You've been added to the event."
         console.log(foundUser);
         res.redirect("/events/" + req.params.id);
@@ -71,27 +66,24 @@ router.post('/:id', async (req,res)=>{
       }
 });
   
-router.get('/:id', async (req, res) => {
+  router.get('/:id', async (req, res) => {
     try{
       const foundEvent = await Event.findById(req.params.id).populate('host');
-      console.log(foundEvent, '<----found event in show route')
-      res.render('events/show.ejs', {event: foundEvent});
-    } catch(err){
-      console.log(err);
-      res.send(err);
-    }
-
-  router.get('/:id', (req, res) => {
-    Event.findById(req.params.id,(err, foundEvent) => {
-      if(err){ß
-        res.send(err);
-      } else {
-        console.log(foundEvent, " <_-- put route response from db");
-        res.render('events/show.ejs', {
-          event: foundEvent
+      console.log(foundEvent, " <--- found event in show route");
+      const foundUser = await User.findById(req.session.userId);
+      console.log(foundUser, " <--- found user in show route");
+      const foundPlayers = await User.find({event:req.params.id});
+      console.log(foundPlayers, " <--- found players in show route");
+      console.log(foundUser._id.toString() == foundEvent.host._id.toString(), "<--foundUser._id == foundEvent._host.id")
+      res.render('events/show.ejs', {
+          event: foundEvent,
+          user: foundUser,
+          players: foundPlayers
         });
+      } catch(err){
+        console.log(err);
+        res.send(err);
       }
-    })
   });
 
   //post route to create new event
@@ -125,27 +117,28 @@ router.get('/:id', async (req, res) => {
     });
   });
   
-  router.delete('/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try{
-      console.log('in delete route');
-      const foundEvent = await Event.findById(req.params.id).populate('host');
-      const users = await User.find({event: req.params.id}).populate('event');
-      if(req.session.userId == foundEvent.host._id.toString()){
-        const deletedEvent = await foundEvent.remove();
-        console.log(deletedEvent, "<----deletedEvent in delete route");
-        req.session.message = "Event Deleted"
-        users.forEach(function(user){
-          user.event = null;
-        });
-      res.redirect('/events/');
-      } else {
-          req.session.message = "Only the host may delete this event"
+        console.log('in delete route');
+        const foundEvent = await Event.findById(req.params.id).populate('host');
+        const users = await User.find({event: req.params.id}).populate('event');
+        if(req.session.userId == foundEvent.host._id.toString()){
+            const deletedEvent = await foundEvent.remove();
+            console.log(deletedEvent, "<----deletedEvent in delete route");
+            req.session.message = "Event Deleted"
+            users.forEach(function(user){
+                user.event = null;
+            });
+            res.redirect('/events/');
+        } 
+        else {
+            req.session.message = "Only the host may delete this event"
         }
-      res.redirect('/events/' + req.params.id);
-      } catch (err){
-      console.log(err);
-      res.send(err);
+        res.redirect('/events/' + req.params.id);
+    } catch (err){
+        console.log(err);
+        res.send(err);
     }
-  });
+});
   
 module.exports = router;
