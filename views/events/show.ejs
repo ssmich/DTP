@@ -7,7 +7,15 @@
             <h1><%=event.name%></h1>
         </header>
         <main>
-            <section>
+        <%if(message){%>
+            <script class="alert-script"> //alert
+                alert('<%=message%>');
+            </script>
+        <%}%>
+            <section class="player-list">
+            
+            </section>
+            <section class="card show-event-card">
                 Name: <%=event.name%><br/>
                 Date: <%=event.date%><br/>
                 Time: <%=event.time%><br/>
@@ -24,6 +32,16 @@
             </section>
             <section>
                 <a href="/events/<%=event._id%>/edit">Edit Event</a>
+            </section>
+            <section>
+                <form action='/events/<%=event._id%>' method="POST">
+                    <input type="submit" name="" value="Join">
+                </form>
+            </section>
+            <section>
+                <form action="/events/<%=event._id%>?_method=DELETE" method="POST">
+                    <input type="submit" name="" value="Delete Event">
+                </form>
             </section>
         </main>
         <%-include ../../partials/_footer.ejs%>

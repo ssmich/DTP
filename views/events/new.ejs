@@ -5,6 +5,11 @@
     <header>
       <h1>Create an Event</h1>
       <%-include ../../partials/_navbar.ejs%>
+      <%if(message){%>
+        <script>
+          alert('<%=message%>');
+        </script>
+      <%}%>       
     </header>
     <main>
         <form action="/events/" method="post">
@@ -22,7 +27,7 @@
             <input type="text" name="location" placeholder="Event location"/><br/>
             <textarea name="description" placeholder="Event description"></textarea><br/>
             <input type="text" name="type" placeholder="Event type (e.g. cards, boardgame, indoor sport...)"/><br/>
-            <input type="text" name="image"/><br/>
+            <input type="text" placeholder="Image URL"name="image"/><br/>
             <input type="submit" value="Create Event"/>
         </form>
     </main>
