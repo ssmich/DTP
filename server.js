@@ -5,6 +5,7 @@ const methodOverride = require('method-override');
 const User = require('./models/users')
 const app = express();
 
+require('dotenv').config();
 require('./db/db');
 const eventsController = require("./controllers/events");
 const usersController = require("./controllers/users");
@@ -54,6 +55,6 @@ app.get('/', async (req, res)=>{
     res.render('home/index.ejs')
 });
 
-app.listen(3000, ()=>{
-    console.log('listening on port 3000');
+app.listen(process.env.PORT, ()=>{
+    console.log('listening on port' + process.env.PORT);
 })
