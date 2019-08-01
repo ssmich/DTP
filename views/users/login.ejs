@@ -2,16 +2,11 @@
 <html lang="en">
     <%-include ../../partials/_head.ejs%>
     <body>
-        <header>
             <%-include ../../partials/_navbar.ejs%>
+            
+    <main>
+        <%-include ../../partials/_alert.ejs%>
             <h1>User Login Page</h1>
-        </header>
-        <main>
-        <%if(message){%>
-        <script class="alert-message">
-            alert('<%=message%>');
-        </script>
-        <%}%>
             <form class="login-box login-page" action="/users/login" method="POST">
                 <h2>DTP User Login</h2>
                 <input type="email" name="email" placeholder="enter your email">

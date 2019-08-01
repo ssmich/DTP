@@ -2,16 +2,10 @@
 <html>
           <%-include ../../partials/_head.ejs%>
   <body>
-    <header>
       <h1>Create an Event</h1>
       <%-include ../../partials/_navbar.ejs%>
-      <%if(message){%>
-        <script>
-          alert('<%=message%>');
-        </script>
-      <%}%>       
-    </header>
     <main>
+      <%-include ../../partials/_alert.ejs%>
         <form action="/events/" method="post">
             Enter Event Name:
                 <input type="text" name="name" placeholder="Name of your event"/><br/>

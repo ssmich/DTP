@@ -2,11 +2,12 @@
 <html lang="en">
     <%-include ../../partials/_head.ejs%>
     <body>
-        <header>
+        
             <%-include ../../partials/_navbar.ejs%>
+            
+    <main>
+            <%-include ../../partials/_alert.ejs%>
             <h1>User Index Page</h1> 
-        </header> 
-        <main>
             <ul>List of Users
                 <%users.forEach(function(user){%>
                     <li><a class="show-user-link" href="/users/<%=user._id%>"><%=user.name%></a></li>

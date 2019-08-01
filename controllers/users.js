@@ -67,7 +67,7 @@ router.get('/logout', async (req, res)=>{
 router.post('/login', async (req, res)=>{
     try{
         const foundUser = await User.findOne({email:req.body.email});
-        console.log(foundUser, "<---found user in login route.");
+        // console.log(foundUser, "<---found user in login route.");
         if(foundUser){
         req.session.userId = foundUser._id;
             console.log(bcrypt.compareSync(req.body.password, foundUser.password), "<---compareSync in login")
@@ -95,9 +95,9 @@ router.get('/:id', async (req, res)=>{
         const user = await User.findById(req.params.id).populate("event");
         if(req.params.id===req.session.userId && user){
         
-        console.log(user, "<----user in show route, event populated")
+        // console.log(user, "<----user in show route, event populated")
         const eventsBeingHosted = await Event.find({host: user._id})
-        console.log(eventsBeingHosted, "<----events hosted by user in show route, host NOT populated")
+        // console.log(eventsBeingHosted, "<----events hosted by user in show route, host NOT populated")
         res.render('users/show.ejs', {
             user: user,
             events: eventsBeingHosted
@@ -119,9 +119,9 @@ router.get('/:id/edit', async (req, res)=>{
     if(req.session.userId){
         try{
             const user = await User.findById(req.params.id).populate('event');
-            console.log(user, "<---user in edit route, event populated");
+            // console.log(user, "<---user in edit route, event populated");
             const eventsBeingHosted = await Event.find({host: user._id});
-            console.log(eventsBeingHosted, '<---events hosted by user in edit route, host NOT populated');
+            // console.log(eventsBeingHosted, '<---events hosted by user in edit route, host NOT populated');
             res.render('users/edit.ejs', {
                 user: user,
                 event: eventsBeingHosted
@@ -161,10 +161,10 @@ router.post('/', async (req, res)=>{
     try{
         const password = req.body.password;
         const hashedPassword = bcrypt.hashSync(password);
-        console.log(hashedPassword, "<---hashed Password in post route.");
+        // console.log(hashedPassword, "<---hashed Password in post route.");
         req.body.password = hashedPassword;
         const newUser = await User.create(req.body);
-        console.log(newUser, "<---new user in post route.")
+        // console.log(newUser, "<---new user in post route.")
         req.session.userId = newUser._id;
         res.redirect('/events/');
     } 

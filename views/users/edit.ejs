@@ -2,11 +2,10 @@
 <html lang="en">
     <%-include ../../partials/_head.ejs%>
     <body>
-        <header>
             <%-include ../../partials/_navbar.ejs%>
+    <main>
+            <%-include ../../partials/_alert.ejs%>
             <h1>Edit <%=user.name%>'s Information</h1>
-        </header>
-        <main>
             <form action="/users/<%=user._id%>?_method=PUT" method="POST">
                 Account Information: 
                 Edit Name: 
@@ -30,8 +29,6 @@
                 User Preferences: <br/>
                 Bio: <input type="text" name="bio" placeholder="Share your story" value="<%=user.bio%>"><br/>
                 What kind of events do you like?: <input type="text" name="eventPreferences" placeholder="Favorite Events ..." value="<%=user.eventPreferences%>"><br/><br/>
-                    
-                
                 <br/>
                 <input type="submit" value="Update Your Account"/>
             </form>
