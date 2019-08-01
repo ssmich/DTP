@@ -5,8 +5,8 @@
         
         <li class="btn bg-info"><a href="/users/new"> Register New User </a></li>  
         
-        <%if(currentUserName){%>
-            <li class="btn bg-info"><a href="/users/<%=currentUser%>"><%=currentUserName%>'s Profile</a></li>
+        <%if(currentUser){%>
+            <li class="btn bg-info"><a href="/users/<%=currentUser%>">My Profile</a></li>
             <li class="btn bg-info"><a href="/users/logout">Logout</a></li>
         <%}else{%>
              <li class="btn bg-info"><a href="/users/login">Login</a></li>

@@ -63,21 +63,30 @@ router.get('/new', async (req, res) => {
 //post route to add event id to logged in user
 router.post('/:id', async (req,res)=>{
       try{
-        if(req.session.userId){
           const foundEvent = await Event.findById(req.params.id);
-          const foundUser = await User.findById(req.session.userId);
-          foundUser.event = req.params.id;
-          foundUser.save();
-          req.session.message = "You have been added to the event."
-          // console.log(foundUser);
-          const foundPlayers = await User.find({event:req.params.id});
-          const newAvailableSpots = foundEvent.maxNumberOfPlayers - foundPlayers.length;
-          foundEvent.availableSpots = newAvailableSpots;
-          foundEvent.save();
-          // console.log(foundEvent);
-          res.redirect("/events/" + req.params.id);
-      }
-        else{
+        if(req.session.userId){ 
+          if(foundEvent.availableSpots){
+            const foundUser = await User.findById(req.session.userId);
+            foundUser.event = req.params.id;
+            foundUser.save();
+            req.session.message = "You have been added to the event."
+            // console.log(foundUser);
+            const foundPlayers = await User.find({event:req.params.id});
+            console.log(foundEvent.maxNumberOfPlayers, "<--maxplayers");
+            console.log(foundPlayers.length(), "<--foundplayers.length");
+            console.log(foundEvent.maxNumberOfPlayers, "<--maxplayers");
+
+            const newAvailableSpots = foundEvent.maxNumberOfPlayers - foundPlayers.length();
+            foundEvent.availableSpots = newAvailableSpots;
+            console.log(foundEvent.availableSports, "<--availableSpots");
+            foundEvent.save();
+            // console.log(foundEvent);
+            res.redirect("/events/" + req.params.id);
+          } else {
+            req.session.message = "This game is full."
+            res.redirect('/events/'+req.params.id);
+        } 
+      } else{
           req.session.message = "You must login to join a game."
           res.redirect('/users/login')
       }
