@@ -1,49 +1,94 @@
 
 *{
-    color: rgba(129, 41, 217, 1);
+    color: rgba(33, 10, 56);
 }
 html,body{ 
-    background-color: white; 
+    background-color: rgba(0, 0, 0, 0.3); 
     height: 100%;
+    font-family: 'Proza Libre', sans-serif;
 }
 header{
-    background-color: rgba(129, 41, 217, 0.749); 
+    background-color: rgba(128, 231, 242, 0.70); 
     height: 10vh; 
 }
 main{
-    /* justify-content: center;  */
-    background-color: white; 
+    background-color:rgba(255, 255, 255, 0.876);
     height: 100%;
 }
 footer{
     position: fixed;
     bottom: 0;
-    background-color:  rgba(129, 41, 217, 0.749); 
+    background-color:  rgba(128, 231, 242, 0.70); 
     width: 100%;
     height: 10vh;
     padding: 15px;
 }
+a{
+    color: rgb(74, 3, 146);
+}
+
+a:link{
+    text-decoration:none;
+}
+
+a:active{
+    text-decoration:none;
+}
+
+section>h1{
+    margin:2rem 0rem;
+}
+
+h1{
+    font-family: 'Cormorant Garamond', serif;
+    font-size: calc(3rem + 2vw);
+}
+
 #login-box{
-    /* display: flex; 
-    flex-direction: column;
-    justify-content: flex-end; */
+    height: 60vh;
+    padding: 3rem;
+    margin: 3rem 0;
+    vertical-align: middle;
     background-color: rgba(255, 255, 255, 0.6);
 }
+
 #login-box>input{
-    height: 2rem;
-    text-align: right;
+    margin: 4rem;
 }
+
 #login-box>h2{
     line-height: 18vh;
     font-size: 2rem; 
-    text-align: left;   
+    text-align: center;  
+    height: 60vh; 
 }
 #registration-form{
-    flex-direction: column;
-    width: 30vw;
     height: 60vh;
+    padding: 3rem;
+    margin: 3rem 0;
+    vertical-align: middle;
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.register-text{
+    height: 7vw;
+    min-width: 20rem;
+    width: 80%;
+    padding: 1rem;
+    margin: 1rem;
+    font-size: 2rem;
+    text-align: left;
+}
+
+.register-submit{
+    height: 3rem;
+    min-width: 5vw;
+    width: 50%;
+    padding: 1rem;
+    margin: 1rem;
     text-align: center;
 }
+
 .page-title{
     text-align: center;
 }
@@ -51,29 +96,26 @@ footer{
     top: 0;
 }
 .carousel-text{
-    color: hotpink;
+    color: #7DD952;
     font-size: calc(12pt + 3vw);
     background-color: rgba(255, 255, 255, 0.105);
     -webkit-text-stroke: rgba(0, 0, 0, 0.173);
     -webkit-text-stroke-width: 1px;
 }
-
 .carousel-inner{
     height: 75vh;
     align-content: center;
     vertical-align: middle;
 }
-.login-btn, .logout-btn{
+/* .login-btn, .logout-btn{
     text-decoration: none;
     background-color: #F2BE22;
 }
 
 .register-btn{
-    background-color: orange;
 }
 
 .profile-btn{
-    background-color: #80E7F2;
 }
 
 .host-btn{
@@ -82,7 +124,7 @@ footer{
 
 .find-events-btn{
     background-color: #80E7F2;
-}
+} */
 .card-container{
     height: 100vh;
     /* justify-content: center; */
@@ -95,21 +137,23 @@ footer{
 }
 
 .card {
+    width: 16vw;
+    height: 40vh;
     border-radius: 4px;
     margin-right: 1vw;
     margin-bottom: 1vw;
-    box-shadow: #8129D9 2px 2px 3px;
+    box-shadow:  rgb(128, 231, 242) 2px 2px 3px;
 }
 
 .card:hover{
-    box-shadow: #8129D9 3px 3px 3px;
+    box-shadow:  rgb(125, 217, 82) 3px 3px 3px;
 }
 
 /* Color Theme Swatches in Hex */
-.Calm-and-Happy-1-hex { background-color: #8129D9; }
-.Calm-and-Happy-2-hex { background-color: #A36CD9; }
-.Calm-and-Happy-3-hex { background-color: #80E7F2; }
-.Calm-and-Happy-4-hex { background-color: #7DD952; }
+.Calm-and-Happy-1-hex { background-color: rgb(129, 41, 217); }
+.Calm-and-Happy-2-hex { background-color: rgb(163, 108, 217); }
+.Calm-and-Happy-3-hex { background-color: rgb(128, 231, 242); }
+.Calm-and-Happy-4-hex { background-color: rgb(125, 217, 82); }
 .Calm-and-Happy-5-hex { background-color: #F2BE22; }
 
 /* Color Theme Swatches in RGBA */
@@ -126,11 +170,11 @@ footer{
 .Calm-and-Happy-4-hsla { color: hsla(100, 63, 58, 1); }
 .Calm-and-Happy-5-hsla { color: hsla(45, 88, 54, 1); }
 /* Color Theme Swatches in Hex */
-.Pastels-1-hex { color: #89828C; } /*Slate Blue*/
-.Pastels-2-hex { color: #E7E7E5; } /*Pale Robins Egg Blue*/
-.Pastels-3-hex { color: #BDB9B1; } /*Ash Green*/
-.Pastels-4-hex { color: #C6E6DE; } /*Sage*/
-.Pastels-5-hex { color: #CFB4AE; } /*Olive Drab*/
+.Pastels-1-hex { background-color: #89828C; } /*Slate Blue*/
+.Pastels-2-hex { background-color: #E7E7E5; } /*Pale Robins Egg Blue*/
+.Pastels-3-hex { background-color: #BDB9B1; } /*Ash Green*/
+.Pastels-4-hex { background-color: #C6E6DE; } /*Sage*/
+.Pastels-5-hex { background-color: #CFB4AE; } /*Olive Drab*/
 /* Color Theme Swatches in RGBA */
 .Pastels-1-rgba { color: rgba(137, 130, 140, 1); }
 .Pastels-2-rgba { color: rgba(231, 231, 229, 1); }

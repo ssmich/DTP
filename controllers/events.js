@@ -4,7 +4,7 @@ const User = require('../models/users');
 const Event = require('../models/events');
 
 router.get('/', async (req, res) => {
-    const colors = ['Calm-and-Happy-1-hex','Calm-and-Happy-2-hex','Calm-and-Happy-3-hex','Calm-and-Happy-4-hex','Calm-and-Happy-5-hex'];
+    const colors = ['Pastels-1-hex','Pastels-2-hex','Pastels-3-hex','Pastels-4-hex','Pastels-5-hex'];
     Event.find({}, (err, foundEvents) => {
       if(err){
         res.send(err);

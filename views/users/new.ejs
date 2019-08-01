@@ -5,16 +5,29 @@
           <%-include ../../partials/_navbar.ejs%>
     <main>
           <%-include ../../partials/_alert.ejs%>
-          <h1>Login</h1>
-          <%-include ../../partials/_loginbox.ejs%>
-          <h1>Register New User</h1> 
-          <form action="/users/" method="POST">
-            <input value="" placeholder="Name" type="text" name='name'>
-            <input value="" placeholder="Email Address" type="email" name='email'>
-            <input value="" placeholder="Password" type="password" name='password'>
-            <input type="submit" value="Register">
-          </form>
-
+           <section class="row justify-content-center"><h1>Register New User</h1></section>
+        <section class="row justify-content-center">
+            <%# the inner container %>
+            <div class="col-md-8">
+                <div class="row justify-content-center" id="registration-form">
+                
+                <form class="col form-group" action="/users/" method="POST">
+                    <div class="row justify-content-center register-text">
+                        <input value="" placeholder="Name" type="text" name='name'>
+                    </div>  
+                    <div class="row justify-content-center register-text">
+                        <input value="" placeholder="Email Address" type="email" name='email'>
+                    </div >
+                    <div class="row justify-content-center register-text">
+                        <input value="" placeholder="Password" type="password" name='password'>
+                    </div >
+                    <div class="row justify-content-center"> 
+                        <input class="register-submit" type="submit" value="Register">
+                    </div>
+                </form>
+                </div> 
+            </div>
+        </section> 
         </main>
         <%-include ../../partials/_footer.ejs%>
     </body>
