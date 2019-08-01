@@ -63,35 +63,38 @@ router.get('/:id/edit', async (req, res) => {
 //post route to add event id to logged in user
 router.post('/:id', async (req,res)=>{
       try{
-        // console.log(req.session, 'this is the req.session')
-        const foundEvent = await Event.findById(req.params.id);
-        const foundUser = await User.findById(req.session.userId);
+          const foundEvent = await Event.findById(req.params.id);
         if(req.session.userId){ 
           if(foundEvent.availableSpots){
-          foundUser.event = req.params.id;
-          foundUser.save();
-          req.session.message = "You have been added to the event."
-        // console.log(foundUser);
-          const foundPlayers = await User.find({event:req.params.id});
-          const newAvailableSpots = foundEvent.maxNumberOfPlayers - foundPlayers.length();
-          foundEvent.availableSpots = newAvailableSpots;
-          foundEvent.save();
-        // console.log(foundEvent);
-          res.redirect("/events/" + req.params.id);
-          }
-          else{
-            req.session.message = "This game is full, please choose another game!";
+            const foundUser = await User.findById(req.session.userId);
+            foundUser.event = req.params.id;
+            foundUser.save();
+            req.session.message = "You have been added to the event."
+            // console.log(foundUser);
+            const foundPlayers = await User.find({event:req.params.id});
+            console.log(foundEvent.maxNumberOfPlayers, "<--maxplayers");
+            console.log(foundPlayers.length(), "<--foundplayers.length");
+            console.log(foundEvent.maxNumberOfPlayers, "<--maxplayers");
+
+            const newAvailableSpots = foundEvent.maxNumberOfPlayers - foundPlayers.length();
+            foundEvent.availableSpots = newAvailableSpots;
+            console.log(foundEvent.availableSports, "<--availableSpots");
+            foundEvent.save();
+            // console.log(foundEvent);
+            res.redirect("/events/" + req.params.id);
+          } else {
+            req.session.message = "This game is full."
             res.redirect('/events/'+req.params.id);
-          }
-        }
-        else{
-          req.session.message = "You must login to join a game";
+        } 
+      } else{
+          req.session.message = "You must login to join a game."
           res.redirect('/users/login')
-        }
-    }catch(err){
-        console.log(err);  
-        res.send(err);
       }
+        // console.log(req.session, 'this is the req.session'
+    }catch(err){
+      console.log(err);
+      res.send(err);
+    }
 });
   
   router.get('/:id', async (req, res) => {

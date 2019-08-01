@@ -18,7 +18,6 @@ footer{
     position: absolute;
     bottom: 0;
 }
-
 #login-box{
     /* display: flex; 
     flex-direction: column;
@@ -91,3 +90,24 @@ footer{
 .Pastels-3-hsla { color: hsla(39, 8, 71, 1); }
 .Pastels-4-hsla { color: hsla(165, 39, 83, 1); }
 .Pastels-5-hsla { color: hsla(10, 25, 74, 1); }
+
+/* Color Theme Swatches in Hex */
+.Calm-and-Happy-1-hex { color: #8129D9; }
+.Calm-and-Happy-2-hex { color: #A36CD9; }
+.Calm-and-Happy-3-hex { color: #80E7F2; }
+.Calm-and-Happy-4-hex { color: #7DD952; }
+.Calm-and-Happy-5-hex { color: #F2BE22; }
+
+/* Color Theme Swatches in RGBA */
+.Calm-and-Happy-1-rgba { color: rgba(129, 41, 217, 1); }
+.Calm-and-Happy-2-rgba { color: rgba(163, 108, 217, 1); }
+.Calm-and-Happy-3-rgba { color: rgba(128, 231, 242, 1); }
+.Calm-and-Happy-4-rgba { color: rgba(125, 217, 82, 1); }
+.Calm-and-Happy-5-rgba { color: rgba(242, 190, 34, 1); }
+
+/* Color Theme Swatches in HSLA */
+.Calm-and-Happy-1-hsla { color: hsla(270, 69, 50, 1); }
+.Calm-and-Happy-2-hsla { color: hsla(270, 58, 63, 1); }
+.Calm-and-Happy-3-hsla { color: hsla(185, 81, 72, 1); }
+.Calm-and-Happy-4-hsla { color: hsla(100, 63, 58, 1); }
+.Calm-and-Happy-5-hsla { color: hsla(45, 88, 54, 1); }
