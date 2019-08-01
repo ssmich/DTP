@@ -4,6 +4,7 @@ const User = require('../models/users');
 const Event = require('../models/events');
 
 router.get('/', async (req, res) => {
+    const colors = ['Calm-and-Happy-1-hex','Calm-and-Happy-2-hex','Calm-and-Happy-3-hex','Calm-and-Happy-4-hex','Calm-and-Happy-5-hex'];
     Event.find({}, (err, foundEvents) => {
       if(err){
         res.send(err);
@@ -12,7 +13,8 @@ router.get('/', async (req, res) => {
         // we can make folders in our views
         // to seperate each resource
         res.render('events/index.ejs', {
-          events: foundEvents
+          events: foundEvents,
+          colors: colors
         });
       }
     })

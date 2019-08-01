@@ -2,21 +2,24 @@
 *{
     color: rgba(129, 41, 217, 1);
 }
-body{ 
-    background-color: #E7E7E5; 
+html,body{ 
+    background-color: white; 
+    height: 100%;
 }
 header{
-    background-color: #89828C; 
+    background-color: rgba(129, 41, 217, 0.749); 
     height: 10vh; 
 }
 main{
     /* justify-content: center;  */
-    background-color: #E7E7E5; 
+    background-color: rgba(163, 108, 217, 0.31); 
+    height: 100%;
 }
 footer{
-    background-color: rgba(198, 230, 222, 0.157);
-    position: absolute;
-    bottom: 0;
+    background-color:  rgba(129, 41, 217, 0.749); 
+    width: 100%;
+    height: 10vh;
+    padding: 15px;
 }
 #login-box{
     /* display: flex; 
@@ -31,12 +34,15 @@ footer{
 #login-box>h2{
     line-height: 18vh;
     font-size: 2rem; 
-    text-align: center;   
+    text-align: left;   
 }
 #registration-form{
     flex-direction: column;
     width: 30vw;
     height: 60vh;
+    text-align: center;
+}
+.page-title{
     text-align: center;
 }
 .carousel-text{
@@ -48,16 +54,50 @@ footer{
     align-content: center;
     vertical-align: middle;
 }
-.btn{
+.login-btn, .logout-btn{
     text-decoration: none;
+    background-color: #F2BE22;
+}
+
+.register-btn{
+    background-color: orange;
+}
+
+.profile-btn{
+    background-color: #80E7F2;
+}
+
+.host-btn{
+    background-color: #7DD952;
+}
+
+.find-events-btn{
+    background-color: #80E7F2;
+}
+
+.card-color-top{
+    height: 20vh;
+    width: 100%;
+    border-radius: 4px 4px 0 0;
+}
+
+.card {
+    border-radius: 4px;
+    margin-right: 1vw;
+    margin-bottom: 1vw;
+    box-shadow: #8129D9 2px 2px 3px;
+}
+
+.card:hover{
+    box-shadow: #8129D9 3px 3px 3px;
 }
 
 /* Color Theme Swatches in Hex */
-.Calm-and-Happy-1-hex { color: #8129D9; }
-.Calm-and-Happy-2-hex { color: #A36CD9; }
-.Calm-and-Happy-3-hex { color: #80E7F2; }
-.Calm-and-Happy-4-hex { color: #7DD952; }
-.Calm-and-Happy-5-hex { color: #F2BE22; }
+.Calm-and-Happy-1-hex { background-color: #8129D9; }
+.Calm-and-Happy-2-hex { background-color: #A36CD9; }
+.Calm-and-Happy-3-hex { background-color: #80E7F2; }
+.Calm-and-Happy-4-hex { background-color: #7DD952; }
+.Calm-and-Happy-5-hex { background-color: #F2BE22; }
 
 /* Color Theme Swatches in RGBA */
 .Calm-and-Happy-1-rgba { color: rgba(129, 41, 217, 1); }

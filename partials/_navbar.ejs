@@ -3,13 +3,13 @@
         
         <ul class="navbar navbar-right btn-group-lg">
         
-        <li class="btn bg-info"><a href="/users/new"> Register New User </a></li>  
+        <li class="btn register-btn"><a href="/users/new"> Register New User </a></li>  
         
         <%if(currentUser){%>
-            <li class="btn bg-info"><a href="/users/<%=currentUser%>">My Profile</a></li>
-            <li class="btn bg-info"><a href="/users/logout">Logout</a></li>
+            <li class="btn profile-btn"><a href="/users/<%=currentUser%>">My Profile</a></li>
+            <li class="btn logout-btn"><a href="/users/logout">Logout</a></li>
         <%}else{%>
-             <li class="btn bg-info"><a href="/users/login">Login</a></li>
+             <li class="btn login-btn"><a href="/users/login">Login</a></li>
         <%}%>
         </li>  
         </ul>

@@ -8,13 +8,22 @@
         
         <main>
             <%-include ../../partials/_alert.ejs%>
-            <h1>EVENTS INDEX</h1>
-            <h3>This is the body of the Event Index page</h3>
-            <ul>Events being hosted
-                <%for(let i = 0; i < events.length; i++){%>
-                <a href="/events/<%=events[i]._id%>"><li class='event'><%=events[i].name%></li></a>
-                <%}%>
-            </ul>
+            <h1 class="page-title">Find Events!</h1>
+            <section class="card-container container">
+                <div class="row">
+                    <%for(let i = 0; i < events.length; i++){%>
+                        <div class="card" style="width: 15rem;">
+                            <div class="card-color-top <%=colors[i%5]%>" alt="Card image cap"></div>
+                            <div class="card-body">
+                                <h5 class="card-title"><%=events[i].name%></h5>
+                                <p class="card-text"><%=events[i].description%></p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                    <%}%> 
+                </div>
+            </section>
+            
         </main>
         <%-include ../../partials/_footer.ejs%>
     </body>
