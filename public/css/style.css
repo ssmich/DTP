@@ -1,6 +1,6 @@
 
 *{
-    color: rgb(66, 58, 56,.9);
+    color: rgba(129, 41, 217, 1);
 }
 body{ 
     background-color: #E7E7E5; 
@@ -17,13 +17,6 @@ footer{
     background-color: rgba(198, 230, 222, 0.157);
     position: absolute;
     bottom: 0;
-}
-a {
-    text-decoration: none;
-    color: #8129D9;
-}
-.navbar{
-    
 }
 #login-box{
     /* display: flex; 
@@ -46,17 +39,39 @@ a {
     height: 60vh;
     text-align: center;
 }
-
 .carousel-text{
     color: white;
     font-size: calc(22pt + 1vw);
 }
-
 .carousel-inner{
     height: 75vh;
     align-content: center;
     vertical-align: middle;
 }
+.btn{
+    text-decoration: none;
+}
+
+/* Color Theme Swatches in Hex */
+.Calm-and-Happy-1-hex { color: #8129D9; }
+.Calm-and-Happy-2-hex { color: #A36CD9; }
+.Calm-and-Happy-3-hex { color: #80E7F2; }
+.Calm-and-Happy-4-hex { color: #7DD952; }
+.Calm-and-Happy-5-hex { color: #F2BE22; }
+
+/* Color Theme Swatches in RGBA */
+.Calm-and-Happy-1-rgba { color: rgba(129, 41, 217, 1); }
+.Calm-and-Happy-2-rgba { color: rgba(163, 108, 217, 1); }
+.Calm-and-Happy-3-rgba { color: rgba(128, 231, 242, 1); }
+.Calm-and-Happy-4-rgba { color: rgba(125, 217, 82, 1); }
+.Calm-and-Happy-5-rgba { color: rgba(242, 190, 34, 1); }
+
+/* Color Theme Swatches in HSLA */
+.Calm-and-Happy-1-hsla { color: hsla(270, 69, 50, 1); }
+.Calm-and-Happy-2-hsla { color: hsla(270, 58, 63, 1); }
+.Calm-and-Happy-3-hsla { color: hsla(185, 81, 72, 1); }
+.Calm-and-Happy-4-hsla { color: hsla(100, 63, 58, 1); }
+.Calm-and-Happy-5-hsla { color: hsla(45, 88, 54, 1); }
 /* Color Theme Swatches in Hex */
 .Pastels-1-hex { color: #89828C; } /*Slate Blue*/
 .Pastels-2-hex { color: #E7E7E5; } /*Pale Robins Egg Blue*/
