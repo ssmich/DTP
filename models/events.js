@@ -4,6 +4,7 @@ const eventSchema = new mongoose.Schema({
     gameToBePlayed: {type:String, required:true},
     location: {type:String, required:true},
     host: {type: mongoose.Schema.Types.ObjectId, ref:"User"},
+    maxNumberOfPlayers: Number,
     minNumberOfPlayers: Number,
     availableSpots: Number,
     description: String,
@@ -13,7 +14,6 @@ const eventSchema = new mongoose.Schema({
     image: String,
     cost: String,
 });
-
 const Event = mongoose.model("Event", eventSchema);
 
 module.exports = Event;

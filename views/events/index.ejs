@@ -2,16 +2,13 @@
 <html>
     <%-include ../../partials/_head.ejs%>
     <body>
-        <header>
+        
             <%-include ../../partials/_navbar.ejs%>
-            <h1>EVENTS INDEX</h1>
-        </header>
+            
+        
         <main>
-        <%if(message){%>
-        <script class="alert-message">
-            alert('<%=message%>');
-        </script>
-        <%}%>
+            <%-include ../../partials/_alert.ejs%>
+            <h1>EVENTS INDEX</h1>
             <h3>This is the body of the Event Index page</h3>
             <ul>Events being hosted
                 <%for(let i = 0; i < events.length; i++){%>

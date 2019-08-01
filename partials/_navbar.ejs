@@ -1,13 +1,16 @@
-        <h2><a href="/users/new"> Register New User </a></h2>
-        <h2>
-        <%if(currentUserName){%>
-            <a href="/users/<%=currentUser%>"><%=currentUserName%></a>
-            <a href="/users/logout">Logout</a>
-        <%}else{%>
-             <a href="/users/login">Login</a>
-        <%}%></h2>
+<header class="navbar">
+        <a href="/"><div class= "navbar-header" id="icon" style="height: 66px; width: 66px; background-color: orange"></div></a>
         
-    <h2><a href="/users/"> Users Index </a></h2>
-    <h2><a href="/events/">Event's Index </a></h2>
-    <div id="icon" style="height: 100px; width: 100px; background-color: orange"><a href="/">GO HOME</a></div>
-  
+        <ul class="navbar navbar-right btn-group-lg">
+        
+        <li class="btn bg-info"><a href="/users/new"> Register New User </a></li>  
+        
+        <%if(currentUserName){%>
+            <li class="btn bg-info"><a href="/users/<%=currentUser%>"><%=currentUserName%>'s Profile</a></li>
+            <li class="btn bg-info"><a href="/users/logout">Logout</a></li>
+        <%}else{%>
+             <li class="btn bg-info"><a href="/users/login">Login</a></li>
+        <%}%>
+        </li>  
+        </ul>
+</header>

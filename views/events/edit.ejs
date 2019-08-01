@@ -2,11 +2,11 @@
 <html>
     <%-include ../../partials/_head.ejs%>
     <body>
-        <header>
-            <%-include ../../partials/_navbar.ejs%>
-            <h1>Edit <%=event.name%></h1>
-        </header>
+        <%-include ../../partials/_navbar.ejs%>
+            
         <main>
+            <%-include ../../partials/_alert.ejs%>
+            <h1>Edit <%=event.name%></h1>
             <h2>Event Info:</h2>
             <form action="/events/<%=event._id%>?_method=PUT" method="post">
                 Edit Event Name:

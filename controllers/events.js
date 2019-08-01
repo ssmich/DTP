@@ -66,16 +66,17 @@ router.post('/:id', async (req,res)=>{
         // console.log(req.session, 'this is the req.session')
         const foundEvent = await Event.findById(req.params.id);
         const foundUser = await User.findById(req.session.userId);
-        const foundPlayers = await User.find({event:req.params.id});
-        const newAvailableSlots = foundEvent.availableSpots - foundPlayers.length;
-        foundEvent.availableSpots = newAvailableSlots;
         foundUser.event = req.params.id;
-        console.log(newAvailableSlots, 'available slots before save')
         foundUser.save();
-        foundEvent.save();
-        console.log(newAvailableSlots, 'available slots after save')
         req.session.message = "You have been added to the event."
         // console.log(foundUser);
+
+        const foundPlayers = await User.find({event:req.params.id});
+        const newAvailableSpots = foundEvent.maxNumberOfPlayers - foundPlayers.length;
+        foundEvent.availableSpots = newAvailableSpots;
+        foundEvent.save();
+        // console.log(foundEvent);
+        
         res.redirect("/events/" + req.params.id);
     }catch(err){
         res.send(err);
