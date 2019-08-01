@@ -75,10 +75,10 @@ router.post('/:id', async (req,res)=>{
             // console.log(foundUser);
             const foundPlayers = await User.find({event:req.params.id});
             console.log(foundEvent.maxNumberOfPlayers, "<--maxplayers");
-            console.log(foundPlayers.length(), "<--foundplayers.length");
+            console.log(foundPlayers.length, "<--foundplayers.length");
             console.log(foundEvent.maxNumberOfPlayers, "<--maxplayers");
 
-            const newAvailableSpots = foundEvent.maxNumberOfPlayers - foundPlayers.length();
+            const newAvailableSpots = foundEvent.maxNumberOfPlayers - foundPlayers.length;
             foundEvent.availableSpots = newAvailableSpots;
             console.log(foundEvent.availableSports, "<--availableSpots");
             foundEvent.save();
@@ -106,6 +106,10 @@ router.post('/:id', async (req,res)=>{
       const foundUser = await User.findById(req.session.userId);
       // console.log(foundUser, " <--- found user in show route");
       const foundPlayers = await User.find({event:req.params.id});
+      const newAvailableSpots = foundEvent.maxNumberOfPlayers - foundPlayers.length;
+            foundEvent.availableSpots = newAvailableSpots;
+            console.log(foundEvent.availableSports, "<--availableSpots");
+            foundEvent.save();
       // console.log(foundPlayers, " <--- found players in show route");
       // console.log(foundUser._id.toString() == foundEvent.host._id.toString(), "<--foundUser._id == foundEvent._host.id")
       res.render('events/show.ejs', {

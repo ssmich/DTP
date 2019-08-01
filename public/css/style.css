@@ -12,10 +12,12 @@ header{
 }
 main{
     /* justify-content: center;  */
-    background-color: rgba(163, 108, 217, 0.31); 
+    background-color: white; 
     height: 100%;
 }
 footer{
+    position: fixed;
+    bottom: 0;
     background-color:  rgba(129, 41, 217, 0.749); 
     width: 100%;
     height: 10vh;
@@ -45,10 +47,17 @@ footer{
 .page-title{
     text-align: center;
 }
-.carousel-text{
-    color: white;
-    font-size: calc(22pt + 1vw);
+.carousel-caption{
+    top: 0;
 }
+.carousel-text{
+    color: hotpink;
+    font-size: calc(12pt + 3vw);
+    background-color: rgba(255, 255, 255, 0.105);
+    -webkit-text-stroke: rgba(0, 0, 0, 0.173);
+    -webkit-text-stroke-width: 1px;
+}
+
 .carousel-inner{
     height: 75vh;
     align-content: center;
@@ -73,6 +82,10 @@ footer{
 
 .find-events-btn{
     background-color: #80E7F2;
+}
+.card-container{
+    height: 100vh;
+    /* justify-content: center; */
 }
 
 .card-color-top{

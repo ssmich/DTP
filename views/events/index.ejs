@@ -10,18 +10,23 @@
             <%-include ../../partials/_alert.ejs%>
             <h1 class="page-title">Find Events!</h1>
             <section class="card-container container">
-                <div class="row">
-                    <%for(let i = 0; i < events.length; i++){%>
-                        <div class="card" style="width: 15rem;">
-                            <div class="card-color-top <%=colors[i%5]%>" alt="Card image cap"></div>
-                            <div class="card-body">
-                                <h5 class="card-title"><%=events[i].name%></h5>
-                                <p class="card-text"><%=events[i].description%></p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+            <div class='row justify-content-center'>
+                <div class='col-md-10'>
+                   <div class='row'>
+                        <%for(let i = 0; i < events.length; i++){%>
+                            <div class="card" style="width: 16vw;">
+                                <a href='/events/<%=events[i]._id%>'><div class="card-color-top <%=colors[i%5]%>" alt="Card image cap"></div>
+                                <div class="card-body">
+                                    <h5 class="card-title"><%=events[i].name%></h5>
+                                    <p class="card-text"><%=events[i].description%></p>
+                                    <a href="/events/<%=events[i]._id%>" class="btn btn-primary">See More</a>
+                                </div></a>
                             </div>
-                        </div>
-                    <%}%> 
+                        <%}%> 
+                    </div> 
                 </div>
+            </div>
+                
             </section>
             
         </main>
