@@ -1,43 +1,38 @@
+
 *{
-    
-    color: rgb(66, 58, 56,.9)
+    color: rgb(66, 58, 56,.9);
 }
-body{
-    max-width: 100%; 
-    margin: 0 ;
-    padding: 0;
+body{ 
+    background-color: #E7E7E5; 
 }
 header{
     background-color: #89828C; 
     height: 10vh; 
-    display: flex; 
-    padding: 1rem;
 }
 main{
-    display: flex;
-    justify-content: center; 
+    /* justify-content: center;  */
     background-color: #E7E7E5; 
-    padding: 1rem;
-    margin: 0 auto;
-    width: auto;
 }
-footer{background-color: #C6E6DE}
+footer{
+    background-color: rgba(198, 230, 222, 0.157);
+    position: absolute;
+    bottom: 0;
+}
 a{
-    /* background-color: green; */
     text-decoration: none;
 }
+.navbar{
+    
+}
 #login-box{
-    display: flex; 
+    /* display: flex; 
     flex-direction: column;
-    justify-content: flex-end;
-    min-width: 15vw;
-    min-height: 25vh;
+    justify-content: flex-end; */
     background-color: rgba(255, 255, 255, 0.6);
 }
 #login-box>input{
     height: 2rem;
     text-align: right;
-    padding: 0 1rem;
 }
 #login-box>h2{
     line-height: 18vh;
@@ -45,11 +40,21 @@ a{
     text-align: center;   
 }
 #registration-form{
-    display: flex;
     flex-direction: column;
     width: 30vw;
     height: 60vh;
     text-align: center;
+}
+
+.carousel-text{
+    color: white;
+    font-size: calc(22pt + 1vw);
+}
+
+.carousel-inner{
+    height: 75vh;
+    align-content: center;
+    vertical-align: middle;
 }
 /* Color Theme Swatches in Hex */
 .Pastels-1-hex { color: #89828C; } /*Slate Blue*/

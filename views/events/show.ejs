@@ -2,16 +2,10 @@
 <html>
     <%-include ../../partials/_head.ejs%>
     <body>
-        <header>
-            <%-include ../../partials/_navbar.ejs%> 
-            <h1><%=event.name%></h1>
-        </header>
+        <%-include ../../partials/_navbar.ejs%> 
         <main>
-        <%if(message){%>
-            <script class="alert-script"> //alert
-                alert('<%=message%>');
-            </script>
-        <%}%>
+        <%-include ../../partials/_alert.ejs%>
+        <h1><%=event.name%></h1>
         <section> Currently Playing:
         <%if(user && user._id == event.host._id.toString()){%>
             <%players.forEach(function(player){%>
@@ -21,12 +15,7 @@
             <p><%=players.length%> Players</p>
             <%}%>
         </section>
-
-        
-
-            <section class="player-list">
-
-            </section>
+            <section class="player-list"></section>
             <section class="card show-event-card">
                 Name: <%=event.name%><br/>
                 Date: <%=event.date%><br/>
@@ -36,8 +25,8 @@
                 Contact Info: <%=event.host.contactInfo%><br/>
                 Game: <%=event.gameToBePlayed%><br/>
                 Description: <%=event.description%><br/>
-                Maximum Players: <%=event.maxNumberofPlayers%><br/>
-                Minimum Players: <%=event.minNumberofPlayers%><br/>
+                Maximum Players: <%=event.maxNumberOfPlayers%><br/>
+                Minimum Players: <%=event.minNumberOfPlayers%><br/>
                 Available Spots: <%=event.availableSpots%><br/>
                 Event Type: <%=event.type%><br/>
                 <img class="event-image" src='<%=event.image%>'><br/>

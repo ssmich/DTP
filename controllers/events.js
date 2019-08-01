@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
       if(err){
         res.send(err);
       } else {
-        console.log(foundEvents)
+        // console.log(foundEvents)
         // we can make folders in our views
         // to seperate each resource
         res.render('events/index.ejs', {
@@ -47,7 +47,7 @@ router.get('/new', async (req, res) => {
       }
       const foundEvent = await Event.findById(req.params.id);
       if(req.session.userId == foundEvent.host._id.toString()){
-        console.log(foundEvent, "<---- inside edit route, foundEvent");
+        // console.log(foundEvent, "<---- inside edit route, foundEvent");
         res.render('events/edit.ejs', {event: foundEvent});
       } 
       else {
@@ -63,13 +63,20 @@ router.get('/new', async (req, res) => {
 //post route to add event id to logged in user
 router.post('/:id', async (req,res)=>{
       try{
-        console.log(req.session, 'this is the req.session')
+        // console.log(req.session, 'this is the req.session')
         const foundEvent = await Event.findById(req.params.id);
         const foundUser = await User.findById(req.session.userId);
         foundUser.event = req.params.id;
         foundUser.save();
         req.session.message = "You have been added to the event."
-        console.log(foundUser);
+        // console.log(foundUser);
+
+        const foundPlayers = await User.find({event:req.params.id});
+        const newAvailableSpots = foundEvent.maxNumberOfPlayers - foundPlayers.length;
+        foundEvent.availableSpots = newAvailableSpots;
+        foundEvent.save();
+        // console.log(foundEvent);
+        
         res.redirect("/events/" + req.params.id);
     }catch(err){
         res.send(err);
@@ -80,11 +87,11 @@ router.post('/:id', async (req,res)=>{
   router.get('/:id', async (req, res) => {
     try{
       const foundEvent = await Event.findById(req.params.id).populate('host');
-      console.log(foundEvent, " <--- found event in show route");
+      // console.log(foundEvent, " <--- found event in show route");
       const foundUser = await User.findById(req.session.userId);
-      console.log(foundUser, " <--- found user in show route");
+      // console.log(foundUser, " <--- found user in show route");
       const foundPlayers = await User.find({event:req.params.id});
-      console.log(foundPlayers, " <--- found players in show route");
+      // console.log(foundPlayers, " <--- found players in show route");
       // console.log(foundUser._id.toString() == foundEvent.host._id.toString(), "<--foundUser._id == foundEvent._host.id")
       res.render('events/show.ejs', {
           event: foundEvent,
@@ -101,13 +108,13 @@ router.post('/:id', async (req,res)=>{
   router.post('/', async (req, res) => {
     // req.body is the information from the form
     try{
-      console.log(req.body, ' req.body in post route')
-      console.log(req.session.userId, 'req.session.userId')
+      // console.log(req.body, ' req.body in post route')
+      // console.log(req.session.userId, 'req.session.userId')
       req.body.host = req.session.userId;
-      console.log(req.body.host, " req.body.host in post route")
+      // console.log(req.body.host, " req.body.host in post route")
       const createdEvent = await Event.create(req.body);
       createdEvent.populate('host');
-      console.log(createdEvent, ' < createdEvent in post route');
+      // console.log(createdEvent, ' < createdEvent in post route');
       res.redirect('/events/' + createdEvent._id)
     } catch(err){
       console.log(err, "error in post route to make new game");
@@ -117,7 +124,7 @@ router.post('/:id', async (req,res)=>{
 
   
   router.put('/:id', (req, res) => {
-    console.log(req.params, " params in the show route")
+    // console.log(req.params, " params in the show route")
     Event.findByIdAndUpdate(req.params.id, req.body, (err, updatedEvent) => {
       if(err){
         res.send(err);
@@ -135,7 +142,7 @@ router.delete('/:id', async (req, res) => {
         const users = await User.find({event: req.params.id}).populate('event');
         if(req.session.userId == foundEvent.host._id.toString()){
             const deletedEvent = await foundEvent.remove();
-            console.log(deletedEvent, "<----deletedEvent in delete route");
+            // console.log(deletedEvent, "<----deletedEvent in delete route");
             req.session.message = "Event Deleted"
             users.forEach(function(user){
                 user.event = null;
