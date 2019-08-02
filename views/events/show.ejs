@@ -9,34 +9,26 @@
         <div class='container-fluid'>
             <div class='row justify-content-center'>
             <%# Wrapper for Event Info %>
-                <div class='col-md-6 offset-md-1'>
+                <div class='col-md-8'>
                     <div class='user-card' id="user-card">
                         <ul class='show-event-card-info'>
-                            <span><h3>Name:</h3>    <p><%=event.name%></p></span>
-                            <span><h3>Date: </h3> <p><%=event.date%></p></span>
-                            <span><h3>Time: </h3> <p><%=event.time%></p></span>
-                            <span><h3>Location: </h3> <p><%=event.location%></p></span>
-                            <span><h3>Game: </h3> <p><%=event.game%></p></span>
-                            <span><h3>Description: </h3> <p><%=event.description%></p></span>
-                            <span><h3>Host: </h3> <p><%=event.user.name%></p></span>
-                            <span><h3>Contact Info:</h3> <p><%=event.user.contactInfo%><p></span>
-                            <span><h3>Available Spots:</h3> <p><%=event.availableSpots%></p></span>
+                            <span class="event-info"><h4>Name:</h4>    <p><%=event.name%></p></span>
+                            <span class="event-info"><h4>Date: </h4> <p><%=event.date%></p></span>
+                            <span class="event-info"><h4>Time: </h4> <p><%=event.time%></p></span>
+                            <span class="event-info"><h4>Location: </h4> <p><%=event.location%></p></span>
+                            <span class="event-info"><h4>Game: </h4> <p><%=event.game%></p></span>
+                            <span class="event-info"><h4>Description: </h4> <p><%=event.description%></p></span>
                         </ul>
-                    </div>
-                    <div class='btn'><a href="/events/<%=event._id%>/edit">Edit Event</a></div>
-                    <form action="/events/<%=event._id%>?_method=DELETE" method="POST">
-                        <input class="btn" type="submit" name="" value="Delete Event">
-                    </form> 
-                    <form action='/events/<%=event._id%>' method="POST">
-                        <input type="submit" name="" value="Join">
-                    </form>
-            
+                    </div>          
                 </div>
                 <%# Wrapper for Players attending %>
-                <div class='col-md-5'>
-                    <div class="user-card" id="user-card">
-                    <h3>Players attending:</h3>
-                    <p><ul>
+                <div class='col-md-4'>
+                    <div class="user-card event-player-info" id="user-card">
+                    <span class="event-info"><h4>Host: </h4> <p><%=event.host.name%></p></span>
+                    <span class="event-info"><h4>Contact Info:</h4> <p><%=event.host.contactInfo%><p></span>
+                    <span class="event-info"><h4>Available Spots:</h4> <p><%=event.availableSpots%></p></span>
+                    <h4>Players attending:</h4>
+                    <p><ul style=>
                     <%if(user && user._id == event.host._id.toString()){%>
                         <%players.forEach(function(player){%>
                         <div class="item-card btn"><%=player.name%></div>
@@ -44,9 +36,16 @@
                     <%} else if(players.length){%>
                         <div class='item-card btn'><%=players.length%> Players</p>
                     <%} else {%>
-                        <h5>No players yet.</h5>
+                        <p>No players yet.</p>
                     <%}%>
                     </ul></p>
+                    <div class='btn'><a href="/events/<%=event._id%>/edit">Edit Event</a></div>
+                    <form action="/events/<%=event._id%>?_method=DELETE" method="POST">
+                        <input class="btn" type="submit" name="" value="Delete Event">
+                    </form> 
+                    <form action='/events/<%=event._id%>' method="POST">
+                        <input type="submit" name="" value="Join">
+                    </form>
                 </div>
                 
                 </div>
