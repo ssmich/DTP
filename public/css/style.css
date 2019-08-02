@@ -1,6 +1,6 @@
-
 *{
-    color: rgba(33, 10, 56);
+    color: rgb(33, 10, 56);
+    /* border: 1px solid black; */
 }
 html,body{ 
     background-color: rgba(0, 0, 0, 0.3); 
@@ -8,85 +8,84 @@ html,body{
     font-family: 'Proza Libre', sans-serif;
 }
 header{
-    background-color: rgba(128, 231, 242, 0.70); 
-    height: 10vh; 
+    background-color: rgba(129, 41, 217, 0.452); 
+    height: 9vh; 
 }
 main{
-    background-color:rgba(255, 255, 255, 0.876);
-    height: 100%;
+    /* justify-content: center;  */
+    background-color: rgba(218, 202, 235, 0.5);
+    height: 90vh;
 }
 footer{
-    position: fixed;
-    bottom: 0;
-    background-color:  rgba(128, 231, 242, 0.70); 
-    width: 100%;
     height: 10vh;
-    padding: 15px;
+    padding-top: 1.3rem;
+    background-color: rgba(110, 69, 151, 0.75);
+    width: 105%;
+}
+h1{
+    /* font-family: 'Proza Libre', sans-serif; */
+    font-size: calc(3rem + 2vw);
 }
 a{
     color: rgb(74, 3, 146);
 }
 
 a:link{
-    text-decoration:none;
+    text-decoration: none;
 }
-
 a:active{
-    text-decoration:none;
+    text-decoration: none;
 }
-
 section>h1{
-    margin:2rem 0rem;
-}
-
-h1{
-    font-family: 'Cormorant Garamond', serif;
+    /* font-family: 'Proza Libre', sans-serif; */
     font-size: calc(3rem + 2vw);
+    line-height: calc(6rem + 2vw);
 }
 
 #login-box{
-    height: 60vh;
-    padding: 3rem;
-    margin: 3rem 0;
+    padding: 0;
+    padding-top: 3rem;
     vertical-align: middle;
+    height: 60vh;
     background-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 10px rgba(163, 108, 217, 0.425)
+}
+#login-box>input{
+    margin: 3rem;
 }
 
-#login-box>input{
-    margin: 4rem;
+div>input{
+    height: 5rem;
+    padding: 1rem;
+    min-width: 80%;
+    margin: 1rem 0rem;
+    font-size: 1.3rem; 
 }
 
 #login-box>h2{
     line-height: 18vh;
     font-size: 2rem; 
-    text-align: center;  
-    height: 60vh; 
+    text-align: center;   
 }
+
 #registration-form{
-    height: 60vh;
     padding: 3rem;
-    margin: 3rem 0;
+    margin: 1rem 0;
     vertical-align: middle;
     background-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 5px rgba(163, 108, 217, 0.425) 
 }
 
-.register-text{
-    height: 7vw;
-    min-width: 20rem;
-    width: 80%;
-    padding: 1rem;
-    margin: 1rem;
-    font-size: 2rem;
-    text-align: left;
+.btn{
+    color: hsla(270, 68%, 22%, 0.70);
+    border: 1px solid rgba(129, 41, 217, 1);
+    background-color: rgba(255, 255, 255, 0.432);
+    border-radius: 0;
+    font-family: 'Proza Libre', sans-serif;
 }
-
-.register-submit{
-    height: 3rem;
-    min-width: 5vw;
-    width: 50%;
-    padding: 1rem;
-    margin: 1rem;
-    text-align: center;
+.wrapper{
+    min-width: 40vw;
+    max-width: 50vw;    
 }
 
 .page-title{
@@ -96,65 +95,68 @@ h1{
     top: 0;
 }
 .carousel-text{
-    color: #7DD952;
-    font-size: calc(12pt + 3vw);
-    background-color: rgba(255, 255, 255, 0.105);
-    -webkit-text-stroke: rgba(0, 0, 0, 0.173);
-    -webkit-text-stroke-width: 1px;
+    color: rgba(188, 177, 194, 0.918);
+    font-size: calc(12pt + 1.3vw);
+    /* background-color: rgba(255, 255, 255, 0.105); */
+    -webkit-text-stroke: rgba(0, 0, 0, 0.376);
+    -webkit-text-stroke-width: 2px;
 }
 .carousel-inner{
-    height: 75vh;
+    height: 77vh;
     align-content: center;
     vertical-align: middle;
 }
 .card-row{
-    width: 120%;
+    width: 100%;
 }
 
-.show-event-card{
-    width: 50vw;
-}
-/* .login-btn, .logout-btn{
-    text-decoration: none;
-    background-color: #F2BE22;
-}
-
-.register-btn{
-}
-
-.profile-btn{
-}
-
-.host-btn{
-    background-color: #7DD952;
-}
-
-.find-events-btn{
-    background-color: #80E7F2;
-} */
 .card-container{
-    height: 100vh;
+    height: 20vh;
     /* justify-content: center; */
 }
 
 .card-color-top{
-    height: 20vh;
+    height: 10vh;
     width: 100%;
     border-radius: 4px 4px 0 0;
 }
 
 .card {
     width: 16vw;
-    height: 40vh;
+    height: 42vh;
     border-radius: 4px;
     margin-right: 1vw;
     margin-bottom: 1vw;
     box-shadow:  rgb(128, 231, 242) 2px 2px 3px;
+    /* overflow: scroll; */
 }
 
-.card:hover{
-    box-shadow:  rgb(125, 217, 82) 3px 3px 3px;
+.card-title-container {
+    width: 100%;
+    height: 35%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 10px;
 }
+
+.card-text-container {
+    width: 100%;
+    height: 40%;
+    margin-bottom: 2vh;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.card:hover{
+    box-shadow:  rgb(128, 187, 242) 3px 3px 3px;
+}
+
+.card-body{
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 /* Color Theme Swatches in Hex */
 .Fashion1-1-hex { background-color: #F2308B; }
 .Fashion1-2-hex { background-color: #05F2F2; }
