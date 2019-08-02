@@ -1,38 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%-include ../../partials/_head.ejs%>
-    <body>
-            <%-include ../../partials/_navbar.ejs%>
-    <main>
-            <%-include ../../partials/_alert.ejs%>
-            <h1>Edit <%=user.name%>'s Information</h1>
-            <form action="/users/<%=user._id%>?_method=PUT" method="POST">
-                Account Information: 
-                Edit Name: 
-                    <input type="text" name="name" value="<%=user.name%>"><br/>
-                Edit Email Address: 
-                    <input type="email" name="email" placeholder="Enter New Email Address" value="<%=user.email%>"><br/>
-                Edit User Icon: 
-                    <input type="text" name="picture" placeholder="enter a new url" value="<%=user.picture%>"><br/>
-                
-                
-                Edit Preferred Contact Method: 
-                    <select name="contactStyle">
-                        <option value="none">Use my...</option>
-                        <option value="email">email address</option>
-                        <option value="phone">phone Number</option>
-                    </select><br/>
-                    
-                    Edit Contact Info: <input type="text" name="contactInfo" placeholder="Contact Information" value="<%=user.contactInfo%>"><br/>
-                    <br/><br/>
-                
-                User Preferences: <br/>
-                Bio: <input type="text" name="bio" placeholder="Share your story" value="<%=user.bio%>"><br/>
-                What kind of events do you like?: <input type="text" name="eventPreferences" placeholder="Favorite Events ..." value="<%=user.eventPreferences%>"><br/><br/>
-                <br/>
-                <input type="submit" value="Update Your Account"/>
-            </form>
-        </main>
-        <%-include ../../partials/_footer.ejs%>
-    </body>
+   <%-include ../../partials/_head.ejs%>
+   <body>
+           <%-include ../../partials/_navbar.ejs%>
+   <main>
+           <%-include ../../partials/_alert.ejs%>
+           <h1>Edit <%=user.name%>'s Information</h1>
+   <div class="container-fluid">
+       <div class="row justify-content-center">
+       <%# wrapper for the events attending %>
+       <%# ... %>
+       <%# wrapper for the users profile %>
+           <div class="col">
+               <div class="user-card" id="user-card">
+                  <form class='row' action="/users/<%=user._id%>?_method=PUT" method="POST">
+                   <div class="col-md-4">
+                   <div class='row'>
+                        <h3>Account Information:</h3>
+                   </div>
+                    <div class='row'>
+                       <h5>Edit Name:</h5>
+                   </div>
+                        <input class="input-sm" type="text" name="name" value="<%=user.name%>"/>
+                   <div class='row'>
+                       <h5>Edit Email Address:</h5>
+                   </div>
+                        <input class="input-sm" type="email" name="email" placeholder="Enter New Email Address" value="<%=user.email%>"/>
+                   </div>
+                   <div class="col-md-5">
+                   <div class="row">
+                       <h3>User Preferences: </h3>
+                   </div>
+                       <div class='row'>
+                       <h5>Bio:</h5>
+                       </div>
+                       <input class="input-sm" type="text" name="bio" placeholder="Share your story" value="<%=user.bio%>">
+                       <div class='row'>
+                       <h5>What kind of events do you like?</h5>
+                       </div>
+                       <input class="input-sm" type="text" name="eventPreferences" placeholder="Favorite Events ..." value="<%=user.eventPreferences%>">
+                   <div class="row" style="padding-top: 3rem;">
+                   <input class="btn" type="submit" value="Update Your Account"/>
+                   </div>
+               </div>
+               <div class="col">
+                   <div class="row">
+                       <h3>Contact Preferences: </h3>
+                   </div>
+                   <div class="row">
+                       <h5>Edit Contact Info:</h5>
+                   </div>
+                   <input class="input-sm" type="text" name="contactInfo" placeholder="Contact Information" value="<%=user.contactInfo%>">
+                    <div class='row'>
+                       <h5>Preferred Contact Method:</h5><br/>
+                   </div>
+                   <select class="input-sm" name="contactStyle" style="margin-top: 1rem;">
+                       <h5><option value="none">Use my...</option>
+                       <option value="email">email address</option>
+                       <option value="phone">phone Number</option></h5>
+                   </select><br/><br/>
+               </div>
+           </form>
+           </div>
+           </div>
+           </div>
+       </main>
+       <%-include ../../partials/_footer.ejs%>
+   </body>
 </html>
