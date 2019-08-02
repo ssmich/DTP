@@ -1,6 +1,27 @@
-<form id="login-box" action="/users/login" method="POST">
-      <h2>DTP User Login</h2>
-      <input type="email" name="email" placeholder="enter your email"/>
-      <input type="password" name="password" placeholder="enter your pw"/>
-      <input type="submit" value="login">
-</form> 
+<section class="row justify-content-center"><h1>Down To Play Login:</h1></section>
+        <section class="row justify-content-center">
+            <%# the inner container %>
+            <div class="col wrapper" style="padding-bottom: 1rem;">
+                <div class="row justify-content-center" id="login-box" >
+                
+                <form class="col form-group" action="/users/login" method="POST">
+                    <div class="row justify-content-center">
+                        <input type="email" name="email" placeholder="enter your email">
+                    </div>  
+                    <div class="row justify-content-center">
+                        <input type="password" name="password" placeholder="enter your pw">
+                    </div >
+                    <div class="row justify-content-center"> 
+                        <input class="btn" type="submit" value="login">
+                    </div>
+                </form>  
+                </div>
+            <div class="row">
+                <form action="/users/new" method="GET">
+                     <input class="btn bg-info btn-lg" type="submit"  value="Register New User"/> 
+                </form>
+            </div>
+            </div>
+        </div> 
+    </div>
+    </section>

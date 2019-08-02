@@ -1,57 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%-include ../../partials/_head.ejs%>
-    <body>
-            <%-include ../../partials/_navbar.ejs%>
-    <main>
-            <%-include ../../partials/_alert.ejs%>
-            <h1><%=user.name%>'s Show Page</h1>
-            <img class="user-image" src="<%=user.picture%>"> 
-            <ul><%=user.name%>'s Hosting:
-                <%if(events){%>>
-                <%events.forEach(function(event){%>
-                    <form action="/events/<%=event._id%>?_method=DELETE" method="POST">
-                        <li><a href="/events/<%=event._id%>"<li><%=event.name%></a>
-                        <span>
-                            <input type="submit" name="" value="Delete Game">
-                        </span>
-                        </li>
-                    </form>
-                <%})%>
-                    
-                <%}%>
-            </ul>
-            <ul><%=user.name%>'s Events:
-                <%if(!user.event){%>
-                  <p>No events yet<p>
-                <%} else {%>
-                    <p><%=user.event.name%></p>
-                <%}%> 
-            </ul>
-            
-            <p><%=currentUser%></p>
-            
-            <div class="card" id="user-card">
-                <ul>
-                Name: <%=user.name%><br/>
-                email: <%=user.email%><br/>
-                password: <%=user.password%><br/>
-                contactInfo: <%=user.contactInfo%><br/>
-                user icon:<br/>
-                playerRating:<%=user.playerRating%><br/>
-                hostRating: <%=user.hostRating%><br/>
-                bio: <%=user.bio%><br/>
-                eventPreferences: <%=user.eventPreferences%><br/>
-                </ul>
-            </div>
-            <div>Account Edits: 
-                <div><a href="/users/<%=user._id%>/edit">Edit <%=user.name%>'s Info</a></div>
-                <form action="/users/<%=user._id%>?_method=DELETE" method="POST">
-                    <input type="submit" name="" value="Delete Account">
-                </form>
-            </div>
-            
-        </main> 
-        <%-include ../../partials/_footer.ejs%>
+   <%-include ../../partials/_head.ejs%>
+   <body>
+           <%-include ../../partials/_navbar.ejs%>
+   <main>
+   <%-include ../../partials/_alert.ejs%>
+   <h1><%=user.name%>'s Profile</h1>
+   <div class="container-fluid">
+       <div class="row justify-content-center">
+       <%# wrapper for the users profile %>
+           <div class="col-md-6">
+               <div class="user-card" id="user-card">
+                   <ul>
+                   <span><h3>Name:</h3>    <p><%=user.name%></p></span>
+                   <span><h3>email:</h3> <p><%=user.email%><p></span>
+                   <span><h3>contactInfo:</h3> <p><%=user.contactInfo%></p></span>
+                   </ul>
+               </div>
+               <div class='btn'><a href="/users/<%=user._id%>/edit">Edit Profile</a></div>
+               <form action="/users/<%=user._id%>?_method=DELETE" method="POST">
+                   <input class="btn" type="submit" name="" value="Delete Account">
+               </form>
+           </div>
+       <%# wrapper for the events attending %>
+           <div class="col-md-2">
+               <div class="user-card" id="user-card">
+                   <h3>Events you are attending:</h3>
+                   <p><ul>
+                   <%if(!user.event){%>
+                   <h5>No events yet<h5>
+                   <%} else {%>
+                       <div class="item-card btn"><%=user.event.name%></div>
+                   <%}%>
+                   </ul></p>
+               </div>
+           </div>
+           <%# wrapper for the events attending %>
+           <div class="col-md-2">
+               <div class="user-card">
+               <h3>Events hosted by you:</h3>
+                   <p>
+                   <ul>
+                   <%if(events){%>
+                   <%events.forEach(function(event){%>
+                       <form action="/events/<%=event._id%>?_method=DELETE" method="POST">
+                           <div class="item-card"><a href="/events/<%=event._id%>"><%=event.name%></a>
+                               <input class="btn-sm" type="submit" name="" value="Delete Game">
+                           </div>
+                       </form>
+                   <%})%>
+                   <%}%>
+               </ul>
+               </p>
+               </div>
+           </div>
+       </div>
+   </div>
+   </main>
+<%-include ../../partials/_footer.ejs%>
     </body>
 </html>

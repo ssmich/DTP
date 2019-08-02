@@ -51,8 +51,13 @@ app.use('/events', eventsController);
 app.use('/users', usersController);
 
 app.get('/', async (req, res)=>{
-    const user = await User.findById(req.session.userId);
-    res.render('home/index.ejs')
+    try{
+        const user = await User.findById(req.session.userId);
+        res.render('home/index.ejs')
+    } catch(err){
+        console.log(err);
+        res.send(err);
+    }
 });
 
 app.listen(process.env.PORT, ()=>{
