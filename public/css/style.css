@@ -54,6 +54,12 @@ section>h1{
     margin: 3rem;
 }
 
+#icon{
+    height: 66px;
+    width: 66px;
+    background-color: orange;
+}
+
 div>input{
     height: 5rem;
     padding: 1rem;
@@ -83,6 +89,11 @@ div>input{
     border-radius: 0;
     font-family: 'Proza Libre', sans-serif;
 }
+
+.nav-btn{
+    background-color: rgba(179, 134, 173, 0.589); 
+}
+
 .wrapper{
     min-width: 40vw;
     max-width: 50vw;    
@@ -166,7 +177,7 @@ div>input{
 
 /* Color Theme Swatches in Hex */
 .Calm-and-Happy-1-hex { background-color: rgb(129, 41, 217); }
-.Calm-and-Happy-2-hex { background-color: rgb(163, 108, 217); }
+.Calm-and-Happy-2-hex { background-color: rgba(182, 87, 169, 0.589); }
 .Calm-and-Happy-3-hex { background-color: rgb(128, 231, 242); }
 .Calm-and-Happy-4-hex { background-color: rgb(125, 217, 82); }
 .Calm-and-Happy-5-hex { background-color: #F2BE22; }
