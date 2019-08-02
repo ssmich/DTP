@@ -11,11 +11,11 @@
             <h1 class="page-title">Find Events!</h1>
             <section class="card-container container">
             <div class='row justify-content-center'>
-                <div class='col-md-10'>
-                   <div class='row'>
+                <div class='col-md-12'>
+                   <div class='row card-row'>
                         <%for(let i = 0; i < events.length; i++){%>
-                            <div class="card" style="width: 16vw;">
-                                <a href='/events/<%=events[i]._id%>'><div class="card-color-top <%=colors[i%5]%>" alt="Card image cap"></div>
+                            <div class="card text-center" style="width:15vw">
+                                <a href='/events/<%=events[i]._id%>'><div class="card-color-top <%=colors[Math.floor(i/Math.random())%5]%>" alt="Card image cap"></div>
                                 <div class="card-body">
                                     <h5 class="card-title"><%=events[i].name%></h5>
                                     <p class="card-text"><%=events[i].description%></p>

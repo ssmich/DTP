@@ -107,6 +107,13 @@ h1{
     align-content: center;
     vertical-align: middle;
 }
+.card-row{
+    width: 120%;
+}
+
+.show-event-card{
+    width: 50vw;
+}
 /* .login-btn, .logout-btn{
     text-decoration: none;
     background-color: #F2BE22;
@@ -148,6 +155,12 @@ h1{
 .card:hover{
     box-shadow:  rgb(125, 217, 82) 3px 3px 3px;
 }
+/* Color Theme Swatches in Hex */
+.Fashion1-1-hex { background-color: #F2308B; }
+.Fashion1-2-hex { background-color: #05F2F2; }
+.Fashion1-3-hex { background-color: #D9B4A7; }
+.Fashion1-4-hex { background-color: #593E3C; }
+.Fashion1-5-hex { background-color: #D98282; }
 
 /* Color Theme Swatches in Hex */
 .Calm-and-Happy-1-hex { background-color: rgb(129, 41, 217); }
@@ -156,55 +169,21 @@ h1{
 .Calm-and-Happy-4-hex { background-color: rgb(125, 217, 82); }
 .Calm-and-Happy-5-hex { background-color: #F2BE22; }
 
-/* Color Theme Swatches in RGBA */
-.Calm-and-Happy-1-rgba { color: rgba(129, 41, 217, 1); }
-.Calm-and-Happy-2-rgba { color: rgba(163, 108, 217, 1); }
-.Calm-and-Happy-3-rgba { color: rgba(128, 231, 242, 1); }
-.Calm-and-Happy-4-rgba { color: rgba(125, 217, 82, 1); }
-.Calm-and-Happy-5-rgba { color: rgba(242, 190, 34, 1); }
-
-/* Color Theme Swatches in HSLA */
-.Calm-and-Happy-1-hsla { color: hsla(270, 69, 50, 1); }
-.Calm-and-Happy-2-hsla { color: hsla(270, 58, 63, 1); }
-.Calm-and-Happy-3-hsla { color: hsla(185, 81, 72, 1); }
-.Calm-and-Happy-4-hsla { color: hsla(100, 63, 58, 1); }
-.Calm-and-Happy-5-hsla { color: hsla(45, 88, 54, 1); }
 /* Color Theme Swatches in Hex */
 .Pastels-1-hex { background-color: #89828C; } /*Slate Blue*/
 .Pastels-2-hex { background-color: #E7E7E5; } /*Pale Robins Egg Blue*/
 .Pastels-3-hex { background-color: #BDB9B1; } /*Ash Green*/
 .Pastels-4-hex { background-color: #C6E6DE; } /*Sage*/
 .Pastels-5-hex { background-color: #CFB4AE; } /*Olive Drab*/
-/* Color Theme Swatches in RGBA */
-.Pastels-1-rgba { color: rgba(137, 130, 140, 1); }
-.Pastels-2-rgba { color: rgba(231, 231, 229, 1); }
-.Pastels-3-rgba { color: rgba(189, 185, 177, 1); }
-.Pastels-4-rgba { color: rgba(198, 230, 222, 1); }
-.Pastels-5-rgba { color: rgba(207, 180, 174, 1); }
-/* Color Theme Swatches in HSLA */
-.Pastels-1-hsla { color: hsla(281, 4, 52, 1); }
-.Pastels-2-hsla { color: hsla(60, 3, 90, 1); }
-.Pastels-3-hsla { color: hsla(39, 8, 71, 1); }
-.Pastels-4-hsla { color: hsla(165, 39, 83, 1); }
-.Pastels-5-hsla { color: hsla(10, 25, 74, 1); }
-
 /* Color Theme Swatches in Hex */
-.Calm-and-Happy-1-hex { color: #8129D9; }
-.Calm-and-Happy-2-hex { color: #A36CD9; }
-.Calm-and-Happy-3-hex { color: #80E7F2; }
-.Calm-and-Happy-4-hex { color: #7DD952; }
-.Calm-and-Happy-5-hex { color: #F2BE22; }
-
-/* Color Theme Swatches in RGBA */
-.Calm-and-Happy-1-rgba { color: rgba(129, 41, 217, 1); }
-.Calm-and-Happy-2-rgba { color: rgba(163, 108, 217, 1); }
-.Calm-and-Happy-3-rgba { color: rgba(128, 231, 242, 1); }
-.Calm-and-Happy-4-rgba { color: rgba(125, 217, 82, 1); }
-.Calm-and-Happy-5-rgba { color: rgba(242, 190, 34, 1); }
-
-/* Color Theme Swatches in HSLA */
-.Calm-and-Happy-1-hsla { color: hsla(270, 69, 50, 1); }
-.Calm-and-Happy-2-hsla { color: hsla(270, 58, 63, 1); }
-.Calm-and-Happy-3-hsla { color: hsla(185, 81, 72, 1); }
-.Calm-and-Happy-4-hsla { color: hsla(100, 63, 58, 1); }
-.Calm-and-Happy-5-hsla { color: hsla(45, 88, 54, 1); }
+.Fashion2-1-hex { background-color: #F23D4C; }
+.Fashion2-2-hex { background-color: #F2A2C0; }
+.Fashion2-3-hex { background-color: #A61C5C; }
+.Fashion2-4-hex { background-color: #6064A6; }
+.Fashion2-5-hex { background-color: #D99036; }
+/* Color Theme Swatches in Hex */
+.Illustration-1-hex { background-color: #BF2633; }
+.Illustration-2-hex { background-color: #F23545; }
+.Illustration-3-hex { background-color: #A1D94E; }
+.Illustration-4-hex { background-color: #F2D43D; }
+.Illustration-5-hex { background-color: #F28B30; }
