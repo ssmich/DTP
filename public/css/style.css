@@ -18,13 +18,15 @@ main{
 }
 footer{
     height: 10vh;
-    padding-top: 1.3rem;
+    padding-top: .7rem;
     background-color: rgba(110, 69, 151, 0.75);
     width: 105%;
 }
 h1{
     /* font-family: 'Proza Libre', sans-serif; */
     font-size: calc(3rem + 2vw);
+    padding-top: 1rem;
+    padding-left: 5rem;
 }
 a{
     color: rgb(74, 3, 146);
@@ -55,9 +57,25 @@ section>h1{
 }
 
 #icon{
-    height: 66px;
-    width: 66px;
-    background-color: orange;
+    height: 2.5rem;
+    width: 4rem;
+    background: rgb(131,58,180);
+    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+    border-radius: 50%;
+    box-shadow: 0 2.8rem 5px rgba(58, 42, 73, 0.507);
+    /* text-align: center; */
+    overflow: show;
+    margin: 1rem 0;
+    /* clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); */
+}
+
+.dtp-logo{
+    position: relative;
+    top: -50%;
+    left: -5%;
+    width: 113%;
+    height: auto;
+    /* z-index: 1; */
 }
 
 div>input{
@@ -79,7 +97,7 @@ div>input{
     margin: 1rem 0;
     vertical-align: middle;
     background-color: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 0 5px rgba(163, 108, 217, 0.425) 
+    box-shadow: 0 0 5px rgba(163, 108, 217, 0.425); 
 }
 
 .btn{
@@ -91,6 +109,9 @@ div>input{
 }
 
 .nav-btn{
+    /* position: absolute;
+    top: 5%; */
+    margin: -10px 0 0 0;
     background-color: rgba(179, 134, 173, 0.589); 
 }
 
@@ -107,13 +128,13 @@ div>input{
 }
 .carousel-text{
     color: rgba(188, 177, 194, 0.918);
-    font-size: calc(12pt + 1.3vw);
+    font-size: calc(12pt + 2vw);
     /* background-color: rgba(255, 255, 255, 0.105); */
     -webkit-text-stroke: rgba(0, 0, 0, 0.376);
     -webkit-text-stroke-width: 2px;
 }
 .carousel-inner{
-    height: 77vh;
+    height: 75vh;
     align-content: center;
     vertical-align: middle;
 }
@@ -138,13 +159,21 @@ div>input{
     border-radius: 4px;
     margin-right: 1vw;
     margin-bottom: 1vw;
-    box-shadow:  rgb(128, 231, 242) 2px 2px 3px;
+    box-shadow:  rgba(163, 108, 217, 0.425) 2px 2px 3px;
     /* overflow: scroll; */
+}
+
+.card-title{
+    font-size: calc(6pt + 1vw);
+}
+
+.card-text{
+    font-size: calc(6pt + .5vw);
 }
 
 .card-title-container {
     width: 100%;
-    height: 35%;
+    max-height: 35%;
     overflow: hidden;
     text-overflow: ellipsis;
     margin-bottom: 10px;
@@ -152,7 +181,7 @@ div>input{
 
 .card-text-container {
     width: 100%;
-    height: 40%;
+    max-height: 40%;
     margin-bottom: 2vh;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -160,12 +189,18 @@ div>input{
 
 
 .card:hover{
-    box-shadow:  rgb(128, 187, 242) 3px 3px 3px;
+    box-shadow:  rgba(163, 108, 217, 0.425) 3px 3px 3px;
 }
 
 .card-body{
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.card-btn{
+    align-content: flex-end;
+    /* margin-bottom: 1vh; */
+    font-size: calc(6pt + 0.5vw);
 }
 
 /* Color Theme Swatches in Hex */

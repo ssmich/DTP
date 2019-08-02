@@ -1,5 +1,10 @@
 <header class="navbar">
-        <a href="/"><img class= "navbar-header" id="icon" src='/public/images/logoforDTP-transbg-sm.png' alt="DTP Logo"></a>
+          <a href="/">
+               <div id="icon">
+                    <img class="dtp-logo" src='/images/logoforDTP-transbg-sm.png' alt="DTP Logo">
+               </div>
+        
+          </a>
         <ul class="navbar-right btn-group-lg">
         <%if(currentUserName){%>
             <li class="btn nav-btn"><a href="/users/<%=currentUser%>"><%=currentUserName%>'s Profile</a></li>
