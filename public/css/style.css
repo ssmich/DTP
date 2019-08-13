@@ -5,7 +5,7 @@
 html,body{ 
     background-color: rgba(0, 0, 0, 0.3); 
     height: 100%;
-    font-family: 'Proza Libre', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 header{
     background-color: rgba(129, 41, 217, 0.452); 
@@ -13,7 +13,7 @@ header{
 }
 main{
     /* justify-content: center;  */
-    background-color: rgba(218, 202, 235, 0.5);
+    background-color: white;
     height: 90vh;
 }
 footer{
@@ -23,7 +23,7 @@ footer{
     width: 105%;
 }
 h1{
-    /* font-family: 'Proza Libre', sans-serif; */
+    /* font-family: 'Roboto', sans-serif; */
     font-size: calc(3rem + 2vw);
     padding-top: 1rem;
     padding-left: 5rem;
@@ -39,7 +39,7 @@ a:active{
     text-decoration: none;
 }
 section>h1{
-    /* font-family: 'Proza Libre', sans-serif; */
+    /* font-family: 'Roboto', sans-serif; */
     font-size: calc(3rem + 2vw);
     line-height: calc(6rem + 2vw);
 }
@@ -105,7 +105,7 @@ div>input{
     border: 1px solid rgba(129, 41, 217, 1);
     background-color: rgba(255, 255, 255, 0.432);
     border-radius: 0;
-    font-family: 'Proza Libre', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 .nav-btn{
@@ -241,11 +241,11 @@ div>input{
 }
 
 /* Color Theme Swatches in Hex */
-.Vector-Lovers-1-hex { background-color: #BF2633; }
-.Vector-Lovers-2-hex { background-color: #F23545; }
-.Vector-Lovers-3-hex { background-color: #A1D84E; }
-.Vector-Lovers-4-hex { background-color: #F2D33C; }
-.Vector-Lovers-5-hex { background-color: #F28A30; }
+.Vector-Lovers-1-hex { background-color: rgba(191, 38, 51, 0.598); }
+.Vector-Lovers-2-hex { background-color: rgba(242, 53, 69, 0.598); }
+.Vector-Lovers-3-hex { background-color: rgba(161, 216, 78, 0.598); }
+.Vector-Lovers-4-hex { background-color: rgba(242, 212, 60, 0.598); }
+.Vector-Lovers-5-hex { background-color: rgba(242, 138, 48, 0.598); }
 
 /* Color Theme Swatches in RGBA */
 .Vector-Lovers-1-rgba { color: rgba(191, 38, 51, 1); }
